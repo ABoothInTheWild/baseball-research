@@ -10,14 +10,14 @@ from itertools import combinations
 #Chipotle Combinations
 
 #Alexander Booth
-#February 3, 2017
+#April 11, 2017
 
-def chipotleCombinations(containers, fillings, rice, beans, toppings):
+def chipotleCombinations(containers, meat, rice, beans, toppings):
     
     #combinations of choosing any and all meats
     meat_combine= 0
-    for meatNum in range(fillings + 1):
-        meat_combine += len(list(combinations(range(fillings), meatNum)))
+    for meatNum in range(meat + 1):
+        meat_combine += len(list(combinations(range(meat), meatNum)))
     
     #combinations of choosing any and all rice
     rice_combine = 0
@@ -39,11 +39,31 @@ def chipotleCombinations(containers, fillings, rice, beans, toppings):
     
     return(total_comb)
 
-#Current Possibilities
+#Check Against Hendricks:
+#Burrito or Bowl or 2 types of tacos or salad
+containers_old = 5
+#Meat/Filling
+#chicken, steak, barbacoa, carnitas
+meat_old = 4
+#Rice
+#white, brown
+rice_old = 2
+#Beans
+#pinto, black
+beans_old = 2
+#Toppings
+#guac, tomatoes, corn, mild salsa, spicy salsa, 
+#sour cream, veggies, lettuce, cheese
+toppings_old = 9
 
+total_chipotle_old = chipotleCombinations(containers_old, meat_old, rice_old, beans_old, toppings_old)
+print("The total combinations of Chipotle with those inputs are: %d" %total_chipotle_old)
+#The total combinations of Chipotle with those inputs are: 655360
+#It matches!
+
+#Current Possibilities
 #Burrito or Bowl or 3 types of tacos or salad
-#But we'll just stick to a burrito
-containers = 1
+containers = 6
 #Meat/Filling
 #chicken, steak, barbacoa, carnitas, chorizo, sofritas, veggies
 meat = 7

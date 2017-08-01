@@ -1,0 +1,370 @@
+---
+title: "Introduction to openWAR"
+author: "Ben Baumer"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to openWAR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+### What is WAR?
+
+### Data Acquisition
+
+We have developed an R package to compute our implementation of WAR. The first step in that process is to get meaningful play-by-play data. We have written parsers that will download and extract data from the [Major League Baseball Advanced Media (MLBAM) GameDay server](http://gd2.mlb.com). This data is updated live, and available to the public. Thus, although this data is not "free as in freedom", it is "[free as in beer](http://en.wikipedia.org/wiki/Gratis_versus_libre)." 
+
+Using our `openWAR` package, a single game's worth of play-by-play data can be retrieved from the GameDay servers and processed into a data frame. The R class `gameday` contains an object that includes the relevant URLs and XML files, as well as the processed data. The XML files and processed data are cached locally for faster retrieval. Note that since the MLBAM data is not legally transferrable, all data must be downloaded by the user at least once. 
+
+```{r, message=FALSE}
+library(openWAR)
+```
+
+#### Single Game data
+
+To retrieve data for a single game, you need to know the MLBAM identifier for that game. The default game was played on August 12th, 2012 between the New York Mets and the Atlanta Braves. 
+
+```{r, eval=FALSE}
+gd = gameday()
+```
+
+For convenience, we have included the data for this game in the package as `MetsBraves`. 
+
+```{r}
+data(MetsBraves)
+```
+
+The MLBAM identifier is part of the resulting object. 
+
+```{r}
+class(MetsBraves)
+MetsBraves$gameId
+```
+
+The directory on the GameDay server that contains that actual XML files is located here:
+
+```{r}
+MetsBraves$base
+```
+
+In this game, the Braves beat the Mets, [6-5](http://mlb.mlb.com/mlb/gameday/index.jsp?gid=2012_08_12_atlmlb_nynmlb_1&c_id=nym#game=2012_08_12_atlmlb_nynmlb_1,game_state=Wrapup,game_tab=box).
+
+```{r}
+summary(MetsBraves)
+```
+
+Our primary interest will be in analyzing the play-by-play data that we have processed for this game. This data contains a complete record of what happened in the game. Note that there are 62 fields available on each play. 
+
+```{r}
+dim(MetsBraves$ds)
+names(MetsBraves$ds)
+```
+
+For example, this game started with Michael Bourn leading off with a double. After a walk to Martin Prado and a strikeout of Jason Heyward, Chipper Jones grounded into an inning-ending 5-4-3 double play. 
+
+```{r}
+library(dplyr)
+MetsBraves$ds %>%
+  select(pitcherName, batterName, inning, half, startOuts, startCode, event) %>%
+  filter(inning == 1)
+```
+
+#### Many games
+
+More often, we'll be interested in investigating data from many games. The function `getData()` will load (or download) data over any time interval in which you are interested. Let's figure out how many home runs were hit on May 14th, 2013. 
+
+```{r may14, eval=FALSE, warning=FALSE}
+May14 = getData(start = "2013-05-14")
+```
+
+This data has also been included in the package as `May14`.
+
+```{r}
+data(May14)
+```
+
+Note that this is a data frame that also has class `GameDayPlays`. Objects with this class contain data downloaded and processed from MLBAM, but not computations or alterations have been made. 
+
+```{r}
+class(May14)
+May14 %>%
+  filter(event == "Home Run") %>%
+  select(gameId, batterId, description)
+```
+
+#### Visualizing the data
+
+One nice features of the MLBAM data is that it contains an $(x,y)$-coordinate indicating the location of each batted ball hit into play. We can visualize this using the generic `plot()` function on our `GameDayPlays` object. 
+
+```{r plot, fig.width=7, fig.height=7}
+data(May14)
+plot(x = May14)
+```
+
+This returns a `trellis` plot and will pass additional arguments to `xyplot()`. 
+
+### Modeling
+
+In order to compute **openWAR**, we need to model several quantities. The first thing we need to understand is the relative value of each "state" of a half-inning. Since there are three bases, each of which can be either occupied or unoccupied, and there are three possible numbers of outs, each plate appearance begins with the half-inning in one of 25 possible states (the 24 states, plus one last state for three outs). We would like to assign a value to each one of these states that indicates the expected number of runs that will be scored in the remainder of that half-inning. We have precomputed the states and the number of `futureRuns` associated with each play. 
+
+Thus, we want to fit the model
+$$
+  futureRuns \sim baseCode + outs + baseCode \cdot outs,
+$$
+where $baseCode$ is a description of the configuration of the baserunners, and $outs$ is the number of outs in the half-inning. 
+
+For example, consider the bottom of the 1st inning of our game:
+
+```{r}
+MetsBraves$ds %>%
+  filter(inning == 1 & half == "bottom") %>%
+  select(runsFuture, runsOnPlay, startCode, startOuts, description)
+```
+
+The Mets scored two runs in the inning, and thus, when Ruben Tejada opened the inning, there were no runners on base, no outs, but two `futureRuns` were associated with this play. After Tejada flew out, there was one out, but still no one on base and two `futureRuns`. After Mike Baxter singles, David Wright came to the plate with a runner on first (bc_before = 1), one out, and two `futureRuns`. His double scored one run, so Ike Davis followed with a runner on third, one out, and now only one `futureRuns`. By the time Daniel Murphy bats, there are no further `futureRuns` in the inning. 
+
+Every inning begins with no one on and no one out. In this example, two runs scored in the inning. By averaging over all innings, we create an estimate of the expected `futureRuns` for the state `(0,0)`. But we can just as easily do the same for all states. 
+
+#### Building a model for expected runs
+
+The simplest way to build a model for `futureRuns` is to take the average over all observations. To do this, we'll need more data. 
+
+Building up a large data set will take a long time, but you can do it with the `getData()` function. 
+
+```{r, eval=FALSE}
+# Will take a loooong time
+MLBAM2013 = getData(start = "2013-03-31", end = "2013-09-30")
+```
+
+For example, consider the half inning we visited previously. 
+
+```{r}
+MetsBraves$ds %>%
+  filter(inning == 1 & half == "bottom") %>%
+  select(runsFuture, runsOnPlay, startCode, startOuts, description)
+```
+
+The inning began in the state `(0,0)`. Our estimate $\hat{\rho}(0,0)$ of the expected value (in runs) of that state is:
+
+```{r}
+fit.rem = getRunEx(May14)
+fit.rem(baseCode = 0, outs = 0)
+```
+
+Note that since we are building the [Expected Run Matrix](http://www.baseballprospectus.com/sortable/index.php?cid=1405164) on only a small sample of data, it may not be very robust. 
+
+```{r}
+outer(0:7, 0:2, FUN = fit.rem)
+```
+
+On the first play of the inning, Ruben Tejada flied out. This moved the inning into the state `(0,1)`, since there were still no runners on base, but now there was one out. The value of this state is 
+
+```{r}
+fit.rem(0,1)
+```
+
+The difference between these two states is $\hat{\delta}_i$:
+
+```{r}
+fit.rem(0,1) - fit.rem(0,0)
+```
+
+In modeling this play, our goal is to apportion the value of $\hat{\delta}_i$ to each of the offensive players. In this case, Tejada was the only offensive player involved, so he gets the full amount. Moreover, $-\hat{\delta}_i$ must also be attributed to the defense. In this case, some of that credit will go to the pitcher, and some will go to the centerfielder. The details of this apportionment scheme will be revealed later. 
+
+The second batter, Mike Baxter, singled. This moved the inning from `(0,1)` to `(1, 1)`. Accordingly, Baxter would receive:
+
+```{r}
+fit.rem(1,1) - fit.rem(0,1)
+```
+
+So far, so good. The next play is particularly complicated. David Wright doubles homes Baxter, and then advances to third on a throwing error by the rightfielder. Let's assume for a moment that the error didn't happen, and that Wright end the play on second base. In this case, the ending state is $(2,1)$, but in addition, one run scored. Thus, the change in expected runs is:
+
+```{r}
+fit.rem(2,1) - fit.rem(1,1) + 1
+```
+
+Clearly, much of the credit here should go to Wright, for hitting the double. But what about Baxter, who scored from first on a double? Our plan is to assume "ghostrunner" rules, wherein the number of bases advanced by each baserunner is determined by the type of hit. Since Wright hit a double, Baxter should have advanced two bases, leaving the inning in the state $(6,1)$. The additional base that he advanced (from third to home) should then be given to Baxter. Thus, as a batter, Wright accrues:
+
+```{r}
+fit.rem(6,1) - fit.rem(1,1)
+```
+
+While Baxter accrues the remainder:
+
+```{r}
+fit.rem(2,1) - fit.rem(6,1) + 1
+```
+
+But now let's revisit what actually happened. Heyward's error allowed Wright to move to third. Thus, the state before the error occurred was `(2,1)` and it led to `(4,1)`. The difference
+
+```{r}
+fit.rem(4,1) - fit.rem(2,1)
+```
+
+goes to Heyward as a rightfielder, and Wright as a baserunner. 
+
+### Making openWAR
+
+
+```{r}
+madeWAR <- makeWAR(May)
+str(madeWAR)
+```
+
+```{r}
+madeWAR$openWAR %>%
+  filter(raa.bat > 3) %>%
+  select(gameId, batterName, pitcherName, event, delta, raa.bat) %>%
+  arrange(desc(raa.bat)) %>%
+  head(10)
+```
+
+
+```{r}
+owar <- getWAR(madeWAR$openWAR)
+summary(owar)
+```
+
+
+### Simulations
+
+```{r, fig.width=6, fig.height=6}
+owar.sim <- shakeWAR(madeWAR)
+plot(owar.sim)
+```
+
+
+In this vignette we will explore some of the tabulated results of `openWAR`. Please note that due to their size, the full play-by-play results are distributed in the [`openWARData` package](https://github.com/beanumber/openWARData). 
+
+```{r}
+library(openWAR)
+```
+
+We have included the pre-computed results of openWAR for the 2012-2014 seasons in the `openWAR` package. For example, the `openWAR2012` data frame contains openWAR values for `r nrow(openWAR2012)` players. 
+
+
+```{r, fig.width=6, fig.height=6}
+data(openWAR2012)
+```
+
+Generic functions for `summary()` and `plot()` have been written to help summarize these results. `summary()` will print the top 25 performers in terms of `openWAR`. This function also accepts an `n` argument that is passed to `head()`. Note that [Mike Trout](http://en.wikipedia.org/wiki/Mike_Trout) led all of baseball in `openWAR` in each of these three seasons. 
+
+```{r, fig.width=6, fig.height=6}
+summary(openWAR2012)
+summary(openWAR2013, n = 10)
+summary(openWAR2014, n = 5)
+```
+
+The `plot()` function provides a scatterplot openWAR Runs Above Average (`RAA`) against combined playing time (plate appearances and batters faced). The $30 \cdot 25 = 750$ players who played the most (390 position players and 360 pitchers) are designated as "MLB Players", while the remaining players are designated as *replacement* players. The average performance of these players defines the baseline for replacement-level players. In the plot, each blue or pink dot represents the performance of an actual player. Each of those players has an associated grey dot with the same horizontal coordinate (e.g. the same amount of playing time). These grey dots are the *replacement-level shadows* of the real players, and their vertical coordinates are the expected performance of that replacement-level player. Each player's `RAA` (and thus `WAR`) is realized as the vertical distance between each player and his replacement-level shadow. 
+
+```{r, fig.width=6, fig.height=6}
+plot(openWAR2012)
+```
+
+In 2012, we can see that Mike Trout was the best position player, Clayton Kershaw was the best pitcher, and Nick Blackburn was the worst player. 
+
+```{r, fig.width=6, fig.height=6}
+plot(openWAR2013)
+plot(openWAR2014)
+```
+
+Note that is all three years, the sum of `RAA` is exactly 0 -- this is guaranteed by the `openWAR` model. The total amount of `WAR` is a measure of how much better, collectively, the MLB players were than the replacment-level players. 
+
+```{r, message=FALSE}
+library(mosaic)
+sum(~RAA, data=openWAR2012)
+sum(~WAR, data=openWAR2012)
+sum(~repl, data=openWAR2012)
+sum(RAA ~ isReplacement, data=openWAR2012)
+sum(RAA ~ isReplacement, data=openWAR2013)
+sum(RAA ~ isReplacement, data=openWAR2014)
+```
+
+Furthermore, the sum of the `RAA` values across each of the 14 different roles is also 0. 
+
+```{r}
+ds <- openWAR2013 %>%
+  mutate(playerId = as.numeric(playerId)) %>%
+  select(playerId, isReplacement) %>%
+  inner_join(MayProcessed$openWARPlays, by = c("playerId" = "batterId")) %>%
+  bind_cols(select(May, batterPos))
+ds %>%
+  select(contains("raa.")) %>%
+  colSums(na.rm = TRUE)
+```
+
+```{r}
+favstats(raa.bat ~ batterPos, data = ds)
+bwplot(raa.bat ~ batterPos, data = ds)
+```
+
+```{r}
+favstats(raa.bat ~ batterPos + isReplacement, data = ds)
+bwplot(raa.bat ~ batterPos | isReplacement, data = ds)
+```
+
+```{r}
+favstats(raa.SS ~ isReplacement, data = ds)
+bwplot(raa.SS ~ factor(isReplacement), data = ds)
+```
+
+[Jose Molina](http://en.wikipedia.org/wiki/Jos%C3%A9_Molina_(baseball))'s had the lowest `WAR` in 2014. Currently, openWAR does not measure the value of catcher framing, an attribute at which [Molina excels](http://grantland.com/features/studying-art-pitch-framing-catchers-such-francisco-cervelli-chris-stewart-jose-molina-others/). 
+
+The fielding `RAA` values in openWAR are separated by position, so that, for example, you can isolate all players who saved at least one run above average at both second base and shortstop. 
+
+```{r}
+openWAR2012 %>%
+  filter(RAA.SS > 1 & RAA.2B > 1) %>%
+  select(Name, TPA, RAA.SS, RAA.2B, WAR) %>%
+  arrange(desc(WAR))
+```
+
+Because `WAR` is a counting stat, it may make sense to consider `WAR` accumulated relative to playing time. In 2012, [Joey Votto](http://en.wikipedia.org/wiki/Joey_Votto) had a higher `openWAR` per plate appearance than Mike Trout, and Craig Kimbrel was the most effective pitcher per batter faced. 
+
+```{r}
+openWAR2012 %>%
+  filter(TPA > 200) %>%
+  mutate(WARpa = WAR/TPA) %>%
+  select(Name, TPA, WAR, WARpa, RAA.bat, RAA.br, RAA.field, RAA.pitch) %>%
+  arrange(desc(WARpa)) %>%
+  head(10)
+```
+
+### Analysis
+
+#### The Leaders
+
+Here are our estimates of the top 50 players in baseball.
+
+```{r}
+summary(openWAR2012, n=50)
+```
+
+#### Making Comparisons
+
+We have our point estimates, but now let's put some variance estimates on those. Here is a graphical depiction of the composition of David Wright's openWAR:
+
+```{r, eval=FALSE}
+sims <- shakeWAR(May)
+plot(sims, playerIds = 431151)
+```
+
+Of course, comparing the openWAR components among players, along with their variance estimates, is most helpful.
+
+```{r, eval=FALSE}
+plot(sims, playerIds = c(431151, 502517, 408234, 285078, 518774, 285079))
+```
+
+There is widespread agreement that the three best players this season have been Miguel Cabrera, Chris Davis, and Mike Trout. We concur, but here is how you might visualize their respective contributions. 
+
+```{r, eval=FALSE}
+plot(sims, playerIds = c(408234, 448801, 545361))
+```
+
+
+### Reference for the openWAR model
+
+For a complete description of the openWAR model, please see our paper on the subject:
+
+* Benjamin S. Baumer, Gregory J. Matthews, Shane T. Jensen. 2013. "OpenWAR: An Open Source System for Evaluating Overall Player Performance in Major League Baseball." *Journal of Quantitative Analysis in Sports*, 11(2), (http://arxiv.org/abs/1312.7158v3).

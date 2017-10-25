@@ -179,10 +179,11 @@ def getSampleScores(team1_off_mean, team1_def_mean, team2_off_mean, team2_def_me
     return rtnScoreArray
     
 ##############################################################################
-numSims = 10000
+numSims = 100000
 worldSeries = simulator(dodgersSub, astrosSub, True, 7, numSims, 4)
 
-columns = ['WinningTeam','NumberOfGames', 'GameOneWinner']
+columns = ['WinningTeam','NumberOfGames', 'GameOneWinner', 'GameTwoWinner', 'GameThreeWinner',
+           'GameFourWinner', 'GameFiveWinner', 'GameSixWinner', 'GameSevenWinner']
 df = pd.DataFrame(index = range(numSims), columns = columns)
 
 for x in range(numSims):
@@ -198,11 +199,34 @@ for x in range(numSims):
             astrosWins += 1
             if y == 0:
                 df.GameOneWinner[x] = "Astros"
+            if y == 2:
+                df.GameTwoWinner[x] = "Astros"
+            if y == 4:
+                df.GameThreeWinner[x] = "Astros"
+            if y == 6:
+                df.GameFourWinner[x] = "Astros"
+            if y == 8:
+                df.GameFiveWinner[x] = "Astros"
+            if y == 10:
+                df.GameSixWinner[x] = "Astros"
+            if y == 12:
+                df.GameSevenWinner[x] = "Astros"
         if dodgersScore > astrosScore:
             dodgersWins += 1
             if y == 0:
                 df.GameOneWinner[x] = "Dodgers"
-                
+            if y == 2:
+                df.GameTwoWinner[x] = "Dodgers"
+            if y == 4:
+                df.GameThreeWinner[x] = "Dodgers"
+            if y == 6:
+                df.GameFourWinner[x] = "Dodgers"
+            if y == 8:
+                df.GameFiveWinner[x] = "Dodgers"
+            if y == 10:
+                df.GameSixWinner[x] = "Dodgers"
+            if y == 12:
+                df.GameSevenWinner[x] = "Dodgers"
         if astrosWins >= 4:
             df.WinningTeam[x] = "Astros"
             df.NumberOfGames[x] = astrosWins + dodgersWins
@@ -216,6 +240,9 @@ for x in range(numSims):
 print("Astros Win Percentage: " , len(df[df.WinningTeam == "Astros"])/float(numSims))
 print("Dodgers Win Percentage: " , len(df[df.WinningTeam == "Dodgers"])/float(numSims))
 
+df.to_csv("HOUvsLAD_Simulation_Results_100000.csv", index=False)
+
+#####################################################################################
 
 df[df.NumberOfGames == 7][["WinningTeam", "NumberOfGames"]].groupby("WinningTeam").count()
 df[df.NumberOfGames == 4][["WinningTeam", "NumberOfGames"]].groupby("WinningTeam").count()
@@ -224,3 +251,10 @@ df[df.NumberOfGames == 4][["WinningTeam", "NumberOfGames"]].groupby("WinningTeam
 df[df.GameOneWinner == "Dodgers"][["WinningTeam", "NumberOfGames"]].groupby("WinningTeam").count()
 df[df.GameOneWinner == "Astros"][["WinningTeam", "NumberOfGames"]].groupby("WinningTeam").count()
 
+df_sub = df[df.GameOneWinner == "Dodgers"]
+df_sub[df_sub.WinningTeam == "Dodgers"].groupby("NumberOfGames").count()
+df_sub.groupby("WinningTeam").count()
+
+
+df_sub2 = df[(df.GameOneWinner == "Dodgers") & (df.GameTwoWinner == "Astros")]
+df_sub2.groupby("WinningTeam").count()

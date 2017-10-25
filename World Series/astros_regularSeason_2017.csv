@@ -1,0 +1,163 @@
+Gm#,Date,,Tm,,Opp,W/L,R,RA,Inn,W-L,Rank,GB,Win,Loss,Save,Time,D/N,Attendance,Streak
+1,Monday Apr 3,boxscore,HOU,,SEA,W,3,0,,1-0,1,Tied,Keuchel,Hernandez,Giles,2:29,N,41678,+
+2,Tuesday Apr 4,boxscore,HOU,,SEA,W,2,1,,2-0,1,up 1.0,McCullers,Iwakuma,Giles,2:41,N,21406,++
+3,Wednesday Apr 5,boxscore,HOU,,SEA,W-wo,5,3,13,3-0,1,up 1.0,Peacock,De Jong,,4:25,N,20303,+++
+4,Thursday Apr 6,boxscore,HOU,,SEA,L,2,4,,3-1,1,up 1.0,Altavilla,Giles,Diaz,2:57,N,18362,-
+5,Friday Apr 7,boxscore,HOU,,KCR,L,1,5,,3-2,1,Tied,Vargas,Fiers,,3:12,N,30491,--
+6,Saturday Apr 8,boxscore,HOU,,KCR,L,3,7,,3-3,2,1.0,Duffy,Gregerson,,2:42,N,35373,---
+7,Sunday Apr 9,boxscore,HOU,,KCR,W-wo,5,4,12,4-3,2,1.0,Devenski,Strahm,,3:49,D,32411,+
+8,Monday Apr 10,boxscore,HOU,@,SEA,L,0,6,,4-4,2,1.5,Paxton,Morton,,2:56,D,44856,-
+9,Tuesday Apr 11,boxscore,HOU,@,SEA,W,7,5,,5-4,2,1.5,Musgrove,Miranda,,3:29,N,18527,+
+10,Wednesday Apr 12,boxscore,HOU,@,SEA,W,10,5,,6-4,2,0.5,Peacock,Altavilla,,3:12,N,14479,++
+11,Friday Apr 14,boxscore,HOU,@,OAK,W,7,2,,7-4,1,up 1.0,Keuchel,Madson,,3:07,N,15385,+++
+12,Saturday Apr 15,boxscore,HOU,@,OAK,W,10,6,,8-4,1,up 2.0,Harris,Casilla,,3:55,D,20140,++++
+13,Monday Apr 17,boxscore,HOU,,LAA,W,3,0,,9-4,1,up 3.5,Morton,Chavez,Giles,2:36,N,23501,+++++
+14,Tuesday Apr 18,boxscore,HOU,,LAA,L,2,5,,9-5,1,up 2.5,Nolasco,Musgrove,Bedrosian,3:05,N,21760,-
+15,Wednesday Apr 19,boxscore,HOU,,LAA,W,5,1,,10-5,1,up 3.0,Keuchel,Ramirez,,2:47,N,24028,+
+16,Thursday Apr 20,boxscore,HOU,,LAA,W,2,1,,11-5,1,up 3.0,McCullers,Shoemaker,Devenski,2:37,D,23173,++
+17,Friday Apr 21,boxscore,HOU,@,TBR,W,6,3,,12-5,1,up 3.0,Feliz,Cobb,Giles,3:16,N,17683,+++
+18,Saturday Apr 22,boxscore,HOU,@,TBR,L,3,6,,12-6,1,up 2.0,Pruitt,Morton,Colome,3:05,N,17008,-
+19,Sunday Apr 23,boxscore,HOU,@,TBR,W,6,4,10,13-6,1,up 3.0,Gregerson,Garton,Giles,3:39,D,15548,+
+20,Tuesday Apr 25,boxscore,HOU,@,CLE,W,4,2,,14-6,1,up 4.0,Keuchel,Tomlin,,2:46,N,14581,++
+21,Wednesday Apr 26,boxscore,HOU,@,CLE,L,6,7,,14-7,1,up 4.0,Bauer,McCullers,Allen,3:12,N,16052,-
+22,Thursday Apr 27,boxscore,HOU,@,CLE,L,3,4,,14-8,1,up 3.0,Kluber,Devenski,Allen,2:50,N,14452,--
+23,Friday Apr 28,boxscore,HOU,,OAK,W,9,4,,15-8,1,up 3.0,Morton,Cotton,,2:58,N,28472,+
+24,Saturday Apr 29,boxscore,HOU,,OAK,L,1,2,,15-9,1,up 3.0,Triggs,Musgrove,Casilla,2:49,N,32147,-
+25,Sunday Apr 30,boxscore,HOU,,OAK,W,7,2,,16-9,1,up 3.0,Keuchel,Hahn,Giles,2:58,D,34880,+
+26,Monday May 1,boxscore,HOU,,TEX,W,6,2,,17-9,1,up 3.5,Devenski,Cashner,Giles,2:59,N,22556,++
+27,Tuesday May 2,boxscore,HOU,,TEX,W,8,7,,18-9,1,up 3.5,Hoyt,Kela,Harris,3:13,N,26208,+++
+28,Wednesday May 3,boxscore,HOU,,TEX,W,10,1,,19-9,1,up 4.5,Morton,Martinez,,3:01,N,27439,++++
+29,Thursday May 4,boxscore,HOU,,TEX,L,4,10,,19-10,1,up 4.5,Griffin,Musgrove,,3:52,D,27391,-
+30,Friday May 5,boxscore,HOU,@,LAA,W,7,6,10,20-10,1,up 5.5,Giles,Norris,Devenski,3:05,N,34556,+
+31,Saturday May 6,boxscore,HOU,@,LAA,L-wo,1,2,,20-11,1,up 4.5,Norris,Devenski,,2:47,N,41097,-
+32,Sunday May 7,boxscore,HOU,@,LAA,W,5,3,,21-11,1,up 5.5,Fiers,Shoemaker,Giles,3:00,D,38383,+
+33,Tuesday May 9,boxscore,HOU,,ATL,W,8,3,,22-11,1,up 6.0,Morton,Colon,,2:41,N,28724,++
+34,Wednesday May 10,boxscore,HOU,,ATL,W,4,2,,23-11,1,up 6.0,Musgrove,Garcia,Giles,2:49,D,23676,+++
+35,Thursday May 11,boxscore,HOU,@,NYY,W,3,2,,24-11,1,up 7.0,Keuchel,Pineda,Giles,3:09,N,39050,++++
+36,Friday May 12,boxscore,HOU,@,NYY,W,5,1,,25-11,1,up 8.0,McCullers,Montgomery,,3:09,N,41150,+++++
+37,Sunday May 14 (1),boxscore,HOU,@,NYY,L,6,11,,25-12,1,up 7.5,Warren,Harris,,3:20,D,,-
+38,Sunday May 14 (2),boxscore,HOU,@,NYY,W,10,7,,26-12,1,up 7.5,Morton,Tanaka,,3:49,D,47883,+
+39,Monday May 15,boxscore,HOU,@,MIA,W,7,2,,27-12,1,up 8.0,Musgrove,Tazawa,,2:57,N,16448,++
+40,Tuesday May 16,boxscore,HOU,@,MIA,W,12,2,,28-12,1,up 8.0,Keuchel,Koehler,,3:00,N,18056,+++
+41,Wednesday May 17,boxscore,HOU,@,MIA,W,3,0,,29-12,1,up 8.0,McCullers,Urena,Giles,2:52,D,24699,++++
+42,Friday May 19,boxscore,HOU,,CLE,L,3,5,,29-13,1,up 6.5,Bauer,Morton,Allen,3:02,N,36446,-
+43,Saturday May 20,boxscore,HOU,,CLE,L,0,3,,29-14,1,up 6.5,Clevinger,Fiers,Allen,2:35,D,34698,--
+44,Sunday May 21,boxscore,HOU,,CLE,L,6,8,,29-15,1,up 5.5,Salazar,Musgrove,,3:06,D,33476,---
+45,Monday May 22,boxscore,HOU,,DET,W,1,0,,30-15,1,up 6.0,Devenski,Fulmer,Giles,2:45,N,22146,+
+46,Tuesday May 23,boxscore,HOU,,DET,W,6,2,,31-15,1,up 7.0,McCullers,Zimmermann,,3:01,N,23179,++
+47,Wednesday May 24,boxscore,HOU,,DET,L,3,6,,31-16,1,up 7.0,Greene,Devenski,,2:52,N,26481,-
+48,Thursday May 25,boxscore,HOU,,DET,W,7,6,,32-16,1,up 8.0,Gregerson,Wilson,Giles,3:30,N,25046,+
+49,Friday May 26,boxscore,HOU,,BAL,W,2,0,,33-16,1,up 9.0,Musgrove,Gausman,Giles,2:31,N,31380,++
+50,Saturday May 27,boxscore,HOU,,BAL,W,5,2,,34-16,1,up 9.0,Keuchel,Miley,Harris,2:56,N,32761,+++
+51,Sunday May 28,boxscore,HOU,,BAL,W,8,4,,35-16,1,up10.0,McCullers,Asher,,2:58,D,34720,++++
+52,Monday May 29,boxscore,HOU,@,MIN,W,16,8,,36-16,1,up11.0,Jankowski,Breslow,,3:44,D,24472,+++++
+53,Tuesday May 30,boxscore,HOU,@,MIN,W,7,2,,37-16,1,up11.0,Fiers,Berrios,,3:01,N,22616,++++++
+54,Wednesday May 31,boxscore,HOU,@,MIN,W,17,6,,38-16,1,up11.0,Feliz,Santiago,,3:35,D,25593,+++++++
+55,Friday Jun 2,boxscore,HOU,@,TEX,W,7,1,,39-16,1,up12.5,Keuchel,Darvish,,2:58,N,39729,++++++++
+56,Saturday Jun 3,boxscore,HOU,@,TEX,W,6,5,,40-16,1,up12.5,Devenski,Cashner,Giles,3:46,N,44168,+++++++++
+57,Sunday Jun 4,boxscore,HOU,@,TEX,W,7,2,,41-16,1,up13.5,Peacock,Perez,,3:18,D,39204,++++++++++
+58,Monday Jun 5,boxscore,HOU,@,KCR,W,7,3,,42-16,1,up14.0,Fiers,Kennedy,,3:09,N,21892,+++++++++++
+59,Tuesday Jun 6,boxscore,HOU,@,KCR,L-wo,7,9,,42-17,1,up13.0,Minor,Giles,,3:10,N,20974,-
+60,Wednesday Jun 7,boxscore,HOU,@,KCR,L,5,7,,42-18,1,up12.0,Vargas,Diaz,Herrera,3:11,N,25628,--
+61,Thursday Jun 8,boxscore,HOU,@,KCR,W,6,1,,43-18,1,up13.0,Harris,Herrera,,2:39,N,32747,+
+62,Friday Jun 9,boxscore,HOU,,LAA,L,4,9,,43-19,1,up12.0,Shoemaker,Peacock,,3:20,N,40786,-
+63,Saturday Jun 10,boxscore,HOU,,LAA,W,3,1,,44-19,1,up13.0,Fiers,Nolasco,Giles,2:52,D,41296,+
+64,Sunday Jun 11,boxscore,HOU,,LAA,L,6,12,,44-20,1,up12.0,Middleton,Feliz,,3:39,D,32425,-
+65,Monday Jun 12,boxscore,HOU,,TEX,L,1,6,,44-21,1,up12.0,Darvish,Musgrove,,3:23,N,25698,--
+66,Tuesday Jun 13,boxscore,HOU,,TEX,L,2,4,,44-22,1,up11.0,Leclerc,Gregerson,Bush,3:07,N,27615,---
+67,Wednesday Jun 14,boxscore,HOU,,TEX,W,13,2,,45-22,1,up11.0,Martes,Cashner,,3:37,N,37221,+
+68,Friday Jun 16,boxscore,HOU,,BOS,L,1,2,,45-23,1,up11.0,Kelly,Harris,Kimbrel,3:11,N,36189,-
+69,Saturday Jun 17,boxscore,HOU,,BOS,W,7,1,,46-23,1,up11.0,Paulino,Porcello,,2:34,N,41017,+
+70,Sunday Jun 18,boxscore,HOU,,BOS,L,5,6,,46-24,1,up11.0,Price,Musgrove,Kimbrel,4:08,N,38389,-
+71,Monday Jun 19,boxscore,HOU,@,OAK,W,4,1,,47-24,1,up12.0,Peacock,Gossett,Giles,2:56,N,10482,+
+72,Tuesday Jun 20,boxscore,HOU,@,OAK,W,8,4,,48-24,1,up12.0,Martes,Gray,,3:28,N,15362,++
+73,Wednesday Jun 21,boxscore,HOU,@,OAK,W,5,1,,49-24,1,up12.5,Fiers,Manaea,,3:06,N,12277,+++
+74,Thursday Jun 22,boxscore,HOU,@,OAK,W,12,9,,50-24,1,up12.5,Paulino,Hahn,Devenski,3:24,D,18747,++++
+75,Friday Jun 23,boxscore,HOU,@,SEA,L,3,13,,50-25,1,up11.5,Hernandez,Musgrove,Gallardo,3:17,N,31783,-
+76,Saturday Jun 24,boxscore,HOU,@,SEA,W,5,2,,51-25,1,up12.5,McCullers,Gaviglio,,3:09,N,29820,+
+77,Sunday Jun 25,boxscore,HOU,@,SEA,W,8,2,,52-25,1,up13.0,Feliz,Miranda,,3:21,D,33010,++
+78,Tuesday Jun 27,boxscore,HOU,,OAK,L,4,6,,52-26,1,up12.5,Manaea,Fiers,Casilla,3:30,N,28312,-
+79,Wednesday Jun 28,boxscore,HOU,,OAK,W,11,8,,53-26,1,up12.5,Feliz,Hahn,Giles,3:27,N,34075,+
+80,Thursday Jun 29,boxscore,HOU,,OAK,W,6,1,,54-26,1,up13.5,Peacock,Gossett,,3:08,D,29509,++
+81,Friday Jun 30,boxscore,HOU,,NYY,L,4,13,,54-27,1,up13.5,Pineda,Feliz,Mitchell,3:20,N,40024,-
+82,Saturday Jul 1,boxscore,HOU,,NYY,W,7,6,,55-27,1,up13.5,Diaz,Betances,Giles,3:25,N,41010,+
+83,Sunday Jul 2,boxscore,HOU,,NYY,W,8,1,,56-27,1,up14.5,Devenski,Severino,,3:29,D,41761,++
+84,Tuesday Jul 4,boxscore,HOU,@,ATL,W,16,4,,57-27,1,up16.0,Peacock,Newcomb,,3:39,N,41456,+++
+85,Wednesday Jul 5,boxscore,HOU,@,ATL,W,10,4,,58-27,1,up16.0,Devenski,Garcia,,3:21,N,37278,++++
+86,Thursday Jul 6,boxscore,HOU,@,TOR,L,4,7,,58-28,1,up15.5,Liriano,McCullers,Osuna,3:18,N,40949,-
+87,Friday Jul 7,boxscore,HOU,@,TOR,W,12,2,,59-28,1,up16.5,Morton,Sanchez,,3:00,N,37332,+
+88,Saturday Jul 8,boxscore,HOU,@,TOR,L,2,7,,59-29,1,up15.5,Stroman,Fiers,,2:44,D,46659,-
+89,Sunday Jul 9,boxscore,HOU,@,TOR,W,19,1,,60-29,1,up16.5,Peacock,Happ,,3:24,D,46622,+
+90,Friday Jul 14,boxscore,HOU,,MIN,W,10,5,,61-29,1,up16.5,Morton,Berrios,,3:42,N,38006,++
+91,Saturday Jul 15,boxscore,HOU,,MIN,L,2,4,,61-30,1,up15.5,Santana,Musgrove,Kintzler,3:21,N,41038,-
+92,Sunday Jul 16,boxscore,HOU,,MIN,W,5,3,,62-30,1,up16.5,Fiers,Gibson,Giles,2:47,D,38253,+
+93,Monday Jul 17,boxscore,HOU,,SEA,L,7,9,10,62-31,1,up15.5,Gallardo,Sipp,Diaz,3:49,N,24701,-
+94,Tuesday Jul 18,boxscore,HOU,,SEA,W,6,2,,63-31,1,up16.5,Peacock,Gaviglio,Gregerson,3:02,N,27111,+
+95,Wednesday Jul 19,boxscore,HOU,,SEA,L,1,4,,63-32,1,up15.5,Paxton,Morton,Diaz,2:51,D,35191,-
+96,Friday Jul 21,boxscore,HOU,@,BAL,W,8,7,,64-32,1,up17.0,Fiers,Jimenez,Giles,3:02,N,25784,+
+97,Saturday Jul 22,boxscore,HOU,@,BAL,W,8,4,,65-32,1,up17.0,Martes,O'Day,,3:28,N,32524,++
+98,Sunday Jul 23,boxscore,HOU,@,BAL,L,7,9,,65-33,1,up17.0,Givens,Gregerson,Britton,3:24,D,21533,-
+99,Monday Jul 24,boxscore,HOU,@,PHI,W,13,4,,66-33,1,up17.0,Musgrove,Velasquez,,3:27,N,17567,+
+100,Tuesday Jul 25,boxscore,HOU,@,PHI,W,5,0,,67-33,1,up17.0,Morton,Pivetta,,2:44,N,17176,++
+101,Wednesday Jul 26,boxscore,HOU,@,PHI,L,0,9,,67-34,1,up17.0,Nola,Fiers,,3:25,N,19718,-
+102,Friday Jul 28,boxscore,HOU,@,DET,W,6,5,,68-34,1,up18.0,Peacock,Rondon,Giles,2:54,N,30358,+
+103,Saturday Jul 29,boxscore,HOU,@,DET,L,3,5,,68-35,1,up17.0,Boyd,Martes,Wilson,2:41,N,33766,-
+104,Sunday Jul 30,boxscore,HOU,@,DET,L,1,13,,68-36,1,up16.0,Verlander,McCullers,,3:26,D,31970,--
+105,Monday Jul 31,boxscore,HOU,,TBR,W,14,7,,69-36,1,up16.0,Morton,Cobb,,3:24,N,24154,+
+106,Tuesday Aug 1,boxscore,HOU,,TBR,L,4,6,,69-37,1,up15.0,Archer,Fiers,Colome,3:27,N,22985,-
+107,Wednesday Aug 2,boxscore,HOU,,TBR,L,0,3,,69-38,1,up15.0,Pruitt,Keuchel,Colome,3:06,N,26722,--
+108,Thursday Aug 3,boxscore,HOU,,TBR,L,3,5,,69-39,1,up15.0,Boxberger,Liriano,Colome,3:23,N,23404,---
+109,Friday Aug 4,boxscore,HOU,,TOR,W,16,7,,70-39,1,up15.0,Peacock,Valdez,,3:05,N,39287,+
+110,Saturday Aug 5,boxscore,HOU,,TOR,L,3,4,10,70-40,1,up14.5,Tepera,Liriano,Osuna,3:16,N,41950,-
+111,Sunday Aug 6,boxscore,HOU,,TOR,W-wo,7,6,,71-40,1,up15.0,Martes,Osuna,,3:16,D,36300,+
+112,Tuesday Aug 8,boxscore,HOU,@,CHW,L,5,8,,71-41,1,up14.0,Holland,Keuchel,Clippard,3:37,N,13974,-
+113,Wednesday Aug 9,boxscore,HOU,@,CHW,L,1,7,,71-42,1,up13.0,Gonzalez,McHugh,,2:54,N,14824,--
+114,Thursday Aug 10,boxscore,HOU,@,CHW,L-wo,2,3,11,71-43,1,up13.0,Holmberg,Martes,,3:41,N,18034,---
+115,Friday Aug 11,boxscore,HOU,@,TEX,L,4,6,,71-44,1,up13.0,Hamels,Morton,,3:22,N,33897,----
+116,Saturday Aug 12,boxscore,HOU,@,TEX,L,3,8,,71-45,1,up12.0,Ross,Fiers,,3:14,N,47306,-----
+117,Sunday Aug 13,boxscore,HOU,@,TEX,W,2,1,,72-45,1,up12.0,Keuchel,Cashner,Giles,3:04,D,31517,+
+118,Monday Aug 14,boxscore,HOU,@,ARI,L,0,2,,72-46,1,up11.5,Greinke,McHugh,Rodney,2:48,N,20405,-
+119,Tuesday Aug 15,boxscore,HOU,@,ARI,W,9,4,,73-46,1,up12.5,Martes,Banda,,3:07,D,16935,+
+120,Wednesday Aug 16,boxscore,HOU,,ARI,W,9,5,,74-46,1,up12.5,Morton,Walker,,3:17,N,27278,++
+121,Thursday Aug 17,boxscore,HOU,,ARI,L,0,4,,74-47,1,up12.0,Corbin,Fiers,,2:48,D,27949,-
+122,Friday Aug 18,boxscore,HOU,,OAK,W,3,1,,75-47,1,up13.0,Keuchel,Manaea,Giles,2:47,N,30908,+
+123,Saturday Aug 19,boxscore,HOU,,OAK,W,3,0,,76-47,1,up13.0,McHugh,Graveman,Clippard,2:47,N,32796,++
+124,Sunday Aug 20,boxscore,HOU,,OAK,L,2,3,,76-48,1,up12.0,Cotton,Peacock,Treinen,3:17,D,34011,-
+125,Tuesday Aug 22,boxscore,HOU,,WSN,L,3,4,,76-49,1,up11.5,Roark,Morton,Doolittle,3:05,N,23798,--
+126,Wednesday Aug 23,boxscore,HOU,,WSN,W,6,1,,77-49,1,up12.5,Fiers,Jackson,,2:48,N,23434,+
+127,Thursday Aug 24,boxscore,HOU,,WSN,L,4,5,11,77-50,1,up12.5,Albers,Clippard,Solis,3:47,N,24761,-
+128,Friday Aug 25,boxscore,HOU,@,LAA,W,2,1,,78-50,1,up12.5,McHugh,Bridwell,Giles,2:56,N,42333,+
+129,Saturday Aug 26,boxscore,HOU,@,LAA,L,6,7,,78-51,1,up12.5,Wood,Clippard,Parker,3:01,N,41101,-
+130,Sunday Aug 27,boxscore,HOU,@,LAA,W,7,5,,79-51,1,up13.5,Musgrove,Bedrosian,Giles,3:16,D,37606,+
+131,Tuesday Aug 29,boxscore,HOU,,TEX,L,2,12,,79-52,1,up12.0,Perez,Fiers,,3:27,N,3485,-
+132,Wednesday Aug 30,boxscore,HOU,,TEX,L,1,8,,79-53,1,up11.0,Cashner,Keuchel,,2:52,N,6123,--
+133,Thursday Aug 31,boxscore,HOU,,TEX,W,5,1,,80-53,1,up11.5,Devenski,Martinez,Giles,3:02,D,3385,+
+134,Saturday Sep 2 (1),boxscore,HOU,,NYM,W,12,8,,81-53,1,up12.5,Morton,Harvey,,3:27,D,30319,++
+135,Saturday Sep 2 (2),boxscore,HOU,,NYM,W,4,1,,82-53,1,up12.5,Musgrove,Lugo,Giles,3:15,N,34904,+++
+136,Sunday Sep 3,boxscore,HOU,,NYM,W,8,6,,83-53,1,up13.5,Harris,Flexen,Devenski,3:14,D,32065,++++
+137,Monday Sep 4,boxscore,HOU,@,SEA,W,6,2,,84-53,1,up13.5,Keuchel,Rzepczynski,,2:53,D,20108,+++++
+138,Tuesday Sep 5,boxscore,HOU,@,SEA,W,3,1,,85-53,1,up13.5,Verlander,Pazos,Giles,3:07,N,14568,++++++
+139,Wednesday Sep 6,boxscore,HOU,@,SEA,W,5,3,,86-53,1,up14.5,Devenski,Diaz,,2:46,N,15104,+++++++
+140,Friday Sep 8,boxscore,HOU,@,OAK,L-wo,8,9,,86-54,1,up14.5,Treinen,Giles,,3:06,N,12288,-
+141,Saturday Sep 9 (1),boxscore,HOU,@,OAK,L,1,11,,86-55,1,up14.0,Gossett,Morton,,3:42,D,,--
+142,Saturday Sep 9 (2),boxscore,HOU,@,OAK,L,4,11,,86-56,1,up14.0,Hatcher,Devenski,,2:48,D,19244,---
+143,Sunday Sep 10,boxscore,HOU,@,OAK,L,2,10,,86-57,1,up13.0,Graveman,Keuchel,,3:48,D,15892,----
+144,Tuesday Sep 12,boxscore,HOU,@,LAA,W,1,0,,87-57,1,up14.0,Verlander,Richards,Giles,2:51,N,36088,+
+145,Wednesday Sep 13,boxscore,HOU,@,LAA,L,1,9,,87-58,1,up13.0,Skaggs,Fiers,,2:28,N,33899,-
+146,Thursday Sep 14,boxscore,HOU,@,LAA,W,5,2,,88-58,1,up14.0,Peacock,Nolasco,,3:20,N,35715,+
+147,Friday Sep 15,boxscore,HOU,,SEA,W,5,2,,89-58,1,up14.0,Morton,Paxton,Giles,3:12,N,28328,++
+148,Saturday Sep 16,boxscore,HOU,,SEA,W,8,6,,90-58,1,up14.0,Keuchel,Ramirez,Musgrove,3:21,D,33650,+++
+149,Sunday Sep 17,boxscore,HOU,,SEA,W,7,1,,91-58,1,up15.0,Verlander,Moore,,2:50,D,30247,++++
+150,Tuesday Sep 19,boxscore,HOU,,CHW,W,3,1,,92-58,1,up16.0,McHugh,Giolito,Giles,2:47,N,23293,+++++
+151,Wednesday Sep 20,boxscore,HOU,,CHW,W,4,3,,93-58,1,up17.0,Peacock,Shields,Musgrove,3:08,N,24995,++++++
+152,Thursday Sep 21,boxscore,HOU,,CHW,L,1,3,,93-59,1,up17.0,Volstad,Keuchel,Minaya,3:17,N,24283,-
+153,Friday Sep 22,boxscore,HOU,,LAA,W,3,0,,94-59,1,up18.0,Verlander,Petit,Giles,3:00,N,34127,+
+154,Saturday Sep 23,boxscore,HOU,,LAA,W,6,2,,95-59,1,up19.0,Morton,Norris,,2:38,D,34035,++
+155,Sunday Sep 24,boxscore,HOU,,LAA,L,5,7,,95-60,1,up18.0,Middleton,Devenski,Parker,3:49,N,36756,-
+156,Monday Sep 25,boxscore,HOU,@,TEX,W,11,2,,96-60,1,up19.0,McHugh,Cashner,,3:33,N,30390,+
+157,Tuesday Sep 26,boxscore,HOU,@,TEX,W,14,3,,97-60,1,up19.0,Keuchel,Hamels,,3:23,N,28976,++
+158,Wednesday Sep 27,boxscore,HOU,@,TEX,W,12,2,,98-60,1,up20.0,Verlander,Martinez,,3:17,D,26053,+++
+159,Thursday Sep 28,boxscore,HOU,@,BOS,W,12,2,,99-60,1,up21.0,Peacock,Rodriguez,,3:31,N,34222,++++
+160,Friday Sep 29,boxscore,HOU,@,BOS,W,3,2,,100-60,1,up21.0,Morton,Fister,Giles,2:47,N,36623,+++++
+161,Saturday Sep 30,boxscore,HOU,@,BOS,L,3,6,,100-61,1,up21.0,Pomeranz,McCullers,,3:19,D,35722,-
+162,Sunday Oct 1,boxscore,HOU,@,BOS,W,4,3,,101-61,1,up21.0,McHugh,Abad,Clippard,3:09,D,34517,+

@@ -48,10 +48,12 @@ np.mean(dodgersSub[dodgersSub["Home/Away"] == 1]["R"])
 np.mean(dodgersSub[dodgersSub["Home/Away"] == 0]["RA"])
 np.mean(dodgersSub[dodgersSub["Home/Away"] == 1]["RA"])
 
+##################################################
+#Histograms
 # the histogram of the data
-n, bins, patches = plt.hist(dodgers.RA, 10, normed=1, facecolor='aqua', alpha=0.75)
-mu = np.mean(dodgers.RA)
-sigma = np.std(dodgers.RA)
+n, bins, patches = plt.hist(dodgers.R, 10, normed=1, facecolor='blue', alpha=0.75)
+mu = np.mean(dodgers.R)
+sigma = np.std(dodgers.R)
 
 # add a 'best fit' line
 y = mlab.normpdf( bins, mu, sigma)
@@ -59,16 +61,19 @@ l = plt.plot(bins, y, 'r--', linewidth=1)
 
 plt.xlabel('Runs Scored')
 plt.ylabel('Frequency')
-plt.title(r'Astros')
+plt.xlim([0,20])
+plt.ylim([0,.16])
+plt.title(r'Dodgers Runs Scored')
 plt.grid(False)
 
 plt.show()
 
 size = 4
+np.random.seed(123)
 test = np.random.negative_binomial(size, size/(size+mu), 1000)
 
 # the histogram of the data
-n, bins, patches = plt.hist(test, 10, normed=1, facecolor='aqua', alpha=0.75)
+n, bins, patches = plt.hist(test, 10, normed=1, facecolor='blue', alpha=0.75)
 mu2 = np.mean(test)
 sigma = np.std(test)
 
@@ -78,7 +83,9 @@ l = plt.plot(bins, y, 'r--', linewidth=1)
 
 plt.xlabel('Runs Scored')
 plt.ylabel('Frequency')
-plt.title(r'Test')
+plt.xlim([0,20])
+plt.ylim([0,.16])
+plt.title(r'Simulated Dodgers Runs Scored')
 plt.grid(False)
 
 plt.show()

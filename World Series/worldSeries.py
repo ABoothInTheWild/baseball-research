@@ -244,6 +244,8 @@ df.to_csv("HOUvsLAD_Simulation_Results_100000.csv", index=False)
 
 #####################################################################################
 
+df = pd.read_csv("HOUvsLAD_Simulation_Results_100000.csv")
+
 df[df.NumberOfGames == 7][["WinningTeam", "NumberOfGames"]].groupby("WinningTeam").count()
 df[df.NumberOfGames == 4][["WinningTeam", "NumberOfGames"]].groupby("WinningTeam").count()
 
@@ -256,5 +258,6 @@ df_sub[df_sub.WinningTeam == "Dodgers"].groupby("NumberOfGames").count()
 df_sub.groupby("WinningTeam").count()
 
 
-df_sub2 = df[(df.GameOneWinner == "Dodgers") & (df.GameTwoWinner == "Astros")]
+df_sub2 = df[(df.GameOneWinner == "Dodgers") & (df.GameTwoWinner == "Dodgers") & (df.GameThreeWinner == "Astros") & (df.GameFourWinner == "Astros") & 
+             (df.GameFiveWinner == "Astros") & (df.GameSixWinner == "Dodgers") & (df.GameSevenWinner == "Astros")]
 df_sub2.groupby("WinningTeam").count()

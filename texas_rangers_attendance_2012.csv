@@ -1,0 +1,82 @@
+year,home_team,month,day,attend,day_of_week,opponent,temp,skies,day_night,cap,shirt,fireworks,bobblehead
+2012,Texas Rangers,APR,6,49085,Friday,Chicago White Sox,75,Clear,Day,NO,NO,NO,NO
+2012,Texas Rangers,APR,7,47867,Saturday,Chicago White Sox,82,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,APR,8,45368,Sunday,Chicago White Sox,65,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,APR,9,42003,Monday,Seattle Mariners,75,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,APR,10,25753,Tuesday,Seattle Mariners,82,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,APR,11,32342,Wednesday,Seattle Mariners,81,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,APR,12,31513,Thursday,Seattle Mariners,77,Cloudy,Day,NO,NO,NO,NO
+2012,Texas Rangers,APR,23,48234,Monday,New York Yankees,75,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,APR,24,47085,Tuesday,New York Yankees,86,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,APR,25,47942,Wednesday,New York Yankees,88,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,APR,27,47496,Friday,Tampa Bay Rays,88,Clear,Night,NO,NO,YES,NO
+2012,Texas Rangers,APR,28,49197,Saturday,Tampa Bay Rays,87,Cloudy,Night,NO,NO,NO,YES
+2012,Texas Rangers,APR,29,43475,Sunday,Tampa Bay Rays,85,Clear,Night,NO,YES,NO,NO
+2012,Texas Rangers,MAY,11,48201,Friday,Los Angeles Angels,73,Cloudy,Night,NO,NO,YES,NO
+2012,Texas Rangers,MAY,12,47699,Saturday,Los Angeles Angels,69,Cloudy,Day,YES,NO,NO,NO
+2012,Texas Rangers,MAY,13,46669,Sunday,Los Angeles Angels,80,Cloudy,Night,NO,YES,NO,NO
+2012,Texas Rangers,MAY,14,38702,Monday,Kansas City Royals,80,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,MAY,15,37210,Tuesday,Kansas City Royals,83,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,MAY,16,46370,Wednesday,Oakland Athletics,87,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,MAY,17,47182,Thursday,Oakland Athletics,86,Clear,Day,NO,NO,NO,NO
+2012,Texas Rangers,MAY,25,46789,Friday,Toronto Blue Jays,90,Clear,Night,NO,NO,YES,NO
+2012,Texas Rangers,MAY,26,47430,Saturday,Toronto Blue Jays,91,Cloudy,Day,NO,NO,NO,NO
+2012,Texas Rangers,MAY,27,46637,Sunday,Toronto Blue Jays,88,Clear,Day,NO,YES,NO,NO
+2012,Texas Rangers,MAY,28,41384,Monday,Seattle Mariners,93,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,MAY,29,34531,Tuesday,Seattle Mariners,90,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,MAY,30,43580,Wednesday,Seattle Mariners,90,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,JUN,12,39140,Tuesday,Arizona Diamondbacks,81,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,JUN,13,45866,Wednesday,Arizona Diamondbacks,86,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,JUN,14,40855,Thursday,Arizona Diamondbacks,93,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,JUN,15,47430,Friday,Houston Astros,86,Cloudy,Night,NO,NO,YES,NO
+2012,Texas Rangers,JUN,16,48288,Saturday,Houston Astros,91,Cloudy,Night,NO,YES,NO,NO
+2012,Texas Rangers,JUN,17,46320,Sunday,Houston Astros,90,Cloudy,Day,NO,NO,NO,NO
+2012,Texas Rangers,JUN,22,46964,Friday,Colorado Rockies,95,Cloudy,Night,NO,NO,YES,NO
+2012,Texas Rangers,JUN,23,42516,Saturday,Colorado Rockies,95,Clear,Day,NO,NO,NO,NO
+2012,Texas Rangers,JUN,24,45407,Sunday,Colorado Rockies,97,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,JUN,25,36920,Monday,Detroit Tigers,100,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,JUN,26,39561,Tuesday,Detroit Tigers,103,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,JUN,27,43379,Wednesday,Detroit Tigers,99,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,JUN,28,33927,Thursday,Oakland Athletics,97,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,JUN,29,46013,Friday,Oakland Athletics,96,Cloudy,Night,NO,NO,YES,NO
+2012,Texas Rangers,JUN,30,46711,Saturday,Oakland Athletics,96,Clear,Night,NO,YES,NO,NO
+2012,Texas Rangers,JUL,1,45741,Sunday,Oakland Athletics,83,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,JUL,6,47240,Friday,Minnesota Twins,98,Cloudy,Night,NO,NO,YES,NO
+2012,Texas Rangers,JUL,7,47067,Saturday,Minnesota Twins,83,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,JUL,8,43268,Sunday,Minnesota Twins,96,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,JUL,23,44132,Monday,Boston Red Sox,97,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,JUL,24,41237,Tuesday,Boston Red Sox,94,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,JUL,25,44104,Wednesday,Boston Red Sox,98,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,JUL,27,47638,Friday,Chicago White Sox,95,Clear,Night,NO,NO,YES,NO
+2012,Texas Rangers,JUL,28,47580,Saturday,Chicago White Sox,100,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,JUL,29,46744,Sunday,Chicago White Sox,104,Clear,Night,NO,YES,NO,NO
+2012,Texas Rangers,JUL,30,36111,Monday,Los Angeles Angels,102,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,JUL,31,34918,Tuesday,Los Angeles Angels,103,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,AUG,1,42832,Wednesday,Los Angeles Angels,105,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,AUG,2,40281,Thursday,Los Angeles Angels,102,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,AUG,10,47255,Friday,Detroit Tigers,96,Clear,Night,NO,NO,YES,NO
+2012,Texas Rangers,AUG,11,48303,Saturday,Detroit Tigers,96,Clear,Night,NO,YES,NO,NO
+2012,Texas Rangers,AUG,12,45752,Sunday,Detroit Tigers,100,Clear,Day,NO,NO,NO,YES
+2012,Texas Rangers,AUG,20,36257,Monday,Baltimore Orioles,88,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,AUG,21,32146,Tuesday,Baltimore Orioles,75,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,AUG,22,40714,Wednesday,Baltimore Orioles,89,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,AUG,23,33762,Thursday,Minnesota Twins,92,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,AUG,24,45823,Friday,Minnesota Twins,92,Clear,Night,NO,NO,YES,NO
+2012,Texas Rangers,AUG,25,44215,Saturday,Minnesota Twins,91,Cloudy,Day,NO,NO,NO,YES
+2012,Texas Rangers,AUG,26,37785,Sunday,Minnesota Twins,87,Cloudy,Day,NO,NO,NO,NO
+2012,Texas Rangers,AUG,27,29453,Monday,Tampa Bay Rays,91,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,AUG,28,30700,Tuesday,Tampa Bay Rays,89,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,AUG,29,36176,Wednesday,Tampa Bay Rays,95,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,SEP,11,34765,Tuesday,Cleveland Indians,88,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,SEP,12,36001,Wednesday,Cleveland Indians,92,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,SEP,13,36102,Thursday,Cleveland Indians,83,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,SEP,14,45075,Friday,Seattle Mariners,66,Cloudy,Night,NO,NO,YES,NO
+2012,Texas Rangers,SEP,15,47267,Saturday,Seattle Mariners,72,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,SEP,16,45928,Sunday,Seattle Mariners,68,Rainy,Day,NO,NO,NO,NO
+2012,Texas Rangers,SEP,24,43044,Monday,Oakland Athletics,91,Cloudy,Night,NO,NO,NO,NO
+2012,Texas Rangers,SEP,25,43874,Tuesday,Oakland Athletics,90,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,SEP,26,46689,Wednesday,Oakland Athletics,89,Clear,Night,NO,NO,NO,NO
+2012,Texas Rangers,SEP,27,43796,Thursday,Oakland Athletics,86,Cloudy,Day,NO,NO,NO,NO
+2012,Texas Rangers,SEP,28,46662,Friday,Los Angeles Angels,77,Cloudy,Night,NO,NO,YES,NO
+2012,Texas Rangers,SEP,30,46713,Sunday,Los Angeles Angels,66,Cloudy,Day,NO,NO,NO,NO
+2012,Texas Rangers,SEP,30,48089,Sunday,Los Angeles Angels,71,Cloudy,Night,NO,NO,NO,NO

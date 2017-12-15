@@ -12,15 +12,13 @@ Created on Fri Nov 24 19:51:08 2017
 from __future__ import division, print_function
 import random
 import pandas as pd
-from twitterBot import *
 
 class BaseballTrivia(TwitterBot):
     
     #inits
-    screen_name = "baseball_trivya"
-    retweetTags = ["mlb", "#mlbnhotstove", "#mlbnow", "#cfbplayoff", "mls", "nfl", "nba", "nhl", "ncaa"]
-    favoriteTags = ["mlb", "#mlbnhotstove", "#mlbnow", "#cfbplayoff", "mls", "nfl", "nba", "nhl", "ncaa"]
-    followTags = ["mlb", "#mlbnhotstove", "#mlbnow", "#cfbplayoff", "mls", "nfl", "nba", "nhl", "ncaa"]
+    name = "baseball_trivya"
+    retweetTags = ["#mlb", "#mlbhotstove", "#cfbplayoff"]
+    followTags = []
     
     #define data
     master = pd.read_csv(r"https://raw.githubusercontent.com/ABoothInTheWild/baseball-research/master/TwitterBot/Data/Master.csv")
@@ -135,3 +133,21 @@ class BaseballTrivia(TwitterBot):
             finalLine = lines[random.randint(0, 3)]
             
             return finalLine
+        
+###########################################################
+
+fb_url = "https://baseball-trivya.firebaseio.com/tweets.json"
+
+#enter the corresponding information from your Twitter application:
+CONSUMER_KEY = '2gBiPBoAovxg7PDNeX6jXTKLX'
+CONSUMER_SECRET = '3YT9LXW7StJ7OoDMHgw8kFVzXZEQK2H2ilnFrseXsUCDLcXSaJ'
+ACCESS_KEY = '931373265653784576-4fgDnw0hbNJ1BAV3egNrh07URyPB6FU'
+ACCESS_SECRET = 'oM1EGxPDqtWiY8Yrvd7j72dMownO7YGYcaqDDhQFREQzh'
+
+twitterBot = BaseballTrivia(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET, fb_url)
+
+while True:
+    twitterBot.doAction()
+
+
+

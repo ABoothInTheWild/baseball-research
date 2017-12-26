@@ -18,9 +18,10 @@ class BaseballTrivia(TwitterBot):
 
     #inits
     screen_name = "baseball_trivya"
-    retweetTags = ["mlb", "hotstove", "marlins", "machado", "#cfbplayoff","nfl", "nba", "nhl", "ncaa"]
-    favoriteTags = ["mlb", "hotstove","marlins", "machado", "#cfbplayoff", "nfl", "nba", "nhl", "ncaa"]
-    followTags = ["mlb", "hotstove", "marlins", "machado", "#cfbplayoff", "nfl", "nba", "nhl", "ncaa"]
+    retweetTags = ["mlb", "hotstove", "bowl", "#cfbplayoff","nfl", "nba", "nhl", "ncaa"]
+    favoriteTags = ["mlb", "hotstove", "bowl", "#cfbplayoff", "nfl", "nba", "nhl", "ncaa"]
+    followTags = ["mlb", "hotstove", "bowl", "#cfbplayoff", "nfl", "nba", "nhl", "ncaa"]
+    logFile = screen_name + "_log.txt"
 
     #define data
     master = pd.read_csv(r"https://raw.githubusercontent.com/ABoothInTheWild/baseball-research/master/TwitterBot/Data/Master.csv")

@@ -20,28 +20,29 @@ from abc import ABCMeta, abstractmethod
 import datetime
 
 class TwitterBot(object):
-    
+
     __metaclass__ = ABCMeta
-    
+
     #Get time. Don't post in the middle of the night
     timeStart = datetime.datetime.strptime('7:00AM', "%I:%M%p").time()
     timeEnd = datetime.datetime.strptime('11:00PM', "%I:%M%p").time()
     timeMOTS = datetime.datetime.strptime('2:00AM', "%I:%M%p").time()
     timeMOTE= datetime.datetime.strptime('3:00AM', "%I:%M%p").time()
-    
+
     #inits
     screen_name = ""
     retweetTags = []
     favoriteTags = []
     followTags = []
-    
+    logFile = ""
+
     def __init__(self, ckey, csec, akey, asec, fb_url):
         self.fb_url = fb_url
-        
+
         auth = tweepy.OAuthHandler(ckey, csec)
         auth.set_access_token(akey, asec)
         self.api = tweepy.API(auth)
-    
+
     def addFollower(self, tag, minRetweetCount=5, minFavCount = 10):
         rtnBool = True
         try:
@@ -53,26 +54,38 @@ class TwitterBot(object):
                 if (tweet.retweet_count > minRetweetCount) and (tweet.favorite_count > minFavCount):
                     if not tweet.user.following:
                         tweet.user.follow()
-                        print('Followed the user: @' + tweet.user.screen_name)
+                        # file-append
+                        f = open(self.logFile,'a')
+                        f.write('\n' + 'Followed the user: @' + tweet.user.screen_name)
+                        f.close()
                         check = True
-                        #Also favorite it half the time    
+                        #Also favorite it half the time
                         if (random.random() >= .5) and (self.checkTweetNotInDB(tweet, favDB)):
                             tweet.favorite()
                             db_tweet = {"id": tweet.id}
                             requests.post(self.fb_url + favDB, json.dumps(db_tweet))
-                            print('Favorited Tweet Id: ' + str(tweet.id))
-                        #Also retweet it occaisionally 
+                            # file-append
+                            f = open(self.logFile,'a')
+                            f.write('\n' + 'Favorited Tweet Id: ' + str(tweet.id))
+                            f.close()
+                        #Also retweet it occaisionally
                         if (random.random() >= .8) and (self.checkTweetNotInDB(tweet, retweetDB)):
                             self.api.retweet(tweet.id)
                             db_tweet = {"id": tweet.id}
                             requests.post(self.fb_url + retweetDB, json.dumps(db_tweet))
-                            print('Retweeted Tweet Id: ' + str(tweet.id))
+                            # file-append
+                            f = open(self.logFile,'a')
+                            f.write('\n' + 'Retweeted Tweet Id: ' + str(tweet.id))
+                            f.close()
                         break
                 else:
                     continue
-                    
+
             if check == False:
-                print("Failed to Follow Anyone")
+                # file-append
+                f = open(self.logFile,'a')
+                f.write('\n' + "Failed to Follow Anyone")
+                f.close()
                 rtnBool = False
 
             # Exceptions
@@ -80,15 +93,19 @@ class TwitterBot(object):
             sys.exit("KeyboardInterrupt")
         except Exception as e:
             print(e)
+            # file-append
+            f = open(self.logFile,'a')
+            f.write('\n' + e)
+            f.close()
             rtnBool = False
         return rtnBool
-        
+
     def postRetweet(self, tag, minRetweetCount=20):
         rtnBool = True
         try:
             retweetDB = "tweets.json"
             favDB = "favTweets.json"
-            
+
             c = tweepy.Cursor(self.api.search, q=tag).items(100)
             for tweet in c:
                 if tweet.retweet_count > minRetweetCount:
@@ -96,26 +113,39 @@ class TwitterBot(object):
                         self.api.retweet(tweet.id)
                         db_tweet = {"id": tweet.id}
                         requests.post(self.fb_url + retweetDB, json.dumps(db_tweet))
-                        print('Retweeted Tweet Id: ' + str(tweet.id))
-                        #Also favorite it half the time    
+                        # file-append
+                        f = open(self.logFile,'a')
+                        f.write('\n' + 'Retweeted Tweet Id: ' + str(tweet.id))
+                        f.close()
+                        #Also favorite it half the time
                         if (random.random() >= .5) and (self.checkTweetNotInDB(tweet, favDB)):
                             tweet.favorite()
                             db_tweet = {"id": tweet.id}
                             requests.post(self.fb_url + favDB, json.dumps(db_tweet))
-                            print('Favorited Tweet Id: ' + str(tweet.id))                    
-                        #Also follow sometimes 
+                            # file-append
+                            f = open(self.logFile,'a')
+                            f.write('\n' + 'Favorited Tweet Id: ' + str(tweet.id))
+                            f.close()
+                        #Also follow sometimes
                         if (random.random() <= .2) and (not tweet.user.following):
                             tweet.user.follow()
-                            print('Followed the user: @' + tweet.user.screen_name)
+                            # file-append
+                            f = open(self.logFile,'a')
+                            f.write('\n' + 'Followed the user: @' + tweet.user.screen_name)
+                            f.close()
                         break
         # Exceptions
         except KeyboardInterrupt:
             sys.exit("KeyboardInterrupt")
         except Exception as e:
             print(e)
+            # file-append
+            f = open(self.logFile,'a')
+            f.write('\n' + e)
+            f.close()
             rtnBool = False
         return rtnBool
-    
+
     def addFavorite(self, tag, minFavoriteCount=20):
         rtnBool = True
         try:
@@ -129,24 +159,36 @@ class TwitterBot(object):
                         tweet.favorite()
                         db_tweet = {"id": tweet.id}
                         requests.post(self.fb_url + favDB, json.dumps(db_tweet))
-                        print('Favorited Tweet Id: ' + str(tweet.id))
+                        # file-append
+                        f = open(self.logFile,'a')
+                        f.write('\n' + 'Favorited Tweet Id: ' + str(tweet.id))
+                        f.close()
                         check = True
-                        #Also retweet it occaisionally 
+                        #Also retweet it occaisionally
                         if (random.random() >= .75) and (self.checkTweetNotInDB(tweet, retweetDB)):
                             self.api.retweet(tweet.id)
                             db_tweet = {"id": tweet.id}
                             requests.post(self.fb_url + retweetDB, json.dumps(db_tweet))
-                            print('Retweeted Tweet Id: ' + str(tweet.id))
-                        #Also follow sometimes 
+                            # file-append
+                            f = open(self.logFile,'a')
+                            f.write('\n' + 'Retweeted Tweet Id: ' + str(tweet.id))
+                            f.close()
+                        #Also follow sometimes
                         if (random.random() <= .2) and (not tweet.user.following):
                             tweet.user.follow()
-                            print('Followed the user: @' + tweet.user.screen_name)
+                            # file-append
+                            f = open(self.logFile,'a')
+                            f.write('\n' + 'Followed the user: @' + tweet.user.screen_name)
+                            f.close()
                         break
                 else:
                     continue
-                
+
             if check == False:
-                print("Failed to Favorite Anything")
+                # file-append
+                f = open(self.logFile,'a')
+                f.write('\n' + "Failed to Favorite Anything")
+                f.close()
                 rtnBool = False
 
         # Exceptions
@@ -154,22 +196,33 @@ class TwitterBot(object):
             sys.exit("KeyboardInterrupt")
         except Exception as e:
             print(e)
+            # file-append
+            f = open(self.logFile,'a')
+            f.write('\n' + e)
+            f.close()
             rtnBool = False
         return rtnBool
-    
+
     def followFollowers(self):
         try:
             for user in self.api.followers():
                 if not user.following:
                     user.follow()
-                    print('Followed the user: @' + user.screen_name)
+                    # file-append
+                    f = open(self.logFile,'a')
+                    f.write('\n' + 'Followed the user: @' + user.screen_name)
+                    f.close()
         # Exceptions
         except KeyboardInterrupt:
             sys.exit("KeyboardInterrupt")
         except Exception as e:
             print(e)
-            pass  
-    
+            # file-append
+            f = open(self.logFile,'a')
+            f.write('\n' + e)
+            f.close()
+            pass
+
     def updateRetweetDatabase(self):
         try:
             retweetDB = "tweets.json"
@@ -184,8 +237,12 @@ class TwitterBot(object):
             sys.exit("KeyboardInterrupt")
         except Exception as e:
             print(e)
-            pass 
-        
+            # file-append
+            f = open(self.logFile,'a')
+            f.write('\n' + e)
+            f.close()
+            pass
+
     def updateFavoriteDatabase(self):
         try:
             favDB = "favTweets.json"
@@ -199,8 +256,12 @@ class TwitterBot(object):
             sys.exit("KeyboardInterrupt")
         except Exception as e:
             print(e)
-            pass  
-        
+            # file-append
+            f = open(self.logFile,'a')
+            f.write('\n' + e)
+            f.close()
+            pass
+
     def checkTweetNotInDB(self, tweet, dataBase):
         rtnBool = True
         try:
@@ -210,14 +271,18 @@ class TwitterBot(object):
                 if tweet.id == r[i]["id"]:
                     rtnBool = False
                     break
-       # Exceptions 
+       # Exceptions
         except KeyboardInterrupt:
             sys.exit("KeyboardInterrupt")
         except Exception as e:
             print(e)
+            # file-append
+            f = open(self.logFile,'a')
+            f.write('\n' + e)
+            f.close()
             pass
         return rtnBool
-    
+
     @staticmethod
     def isNowInTimePeriod(startTime, endTime, nowTime):
         rtnBool = False
@@ -225,48 +290,73 @@ class TwitterBot(object):
             rtnBool = nowTime >= startTime and nowTime <= endTime
         else: #Over midnight
             rtnBool = nowTime >= startTime or nowTime <= endTime
-        
         return rtnBool
-    
+
     @staticmethod
-    def sleepyBaby():
+    def sleepyBaby(self):
         time1 = random.randint(1, 4)
         if time1 == 1:
-            print("Sleeping for 35min...")
+            # file-append
+            f = open(self.logFile,'a')
+            f.write('\n' + "Sleeping for 35min...")
+            f.close()
             sleep(2100) #Tweet every 35 minutes
         elif time1 == 2:
-            print("Sleeping for 65min...")
+            # file-append
+            f = open(self.logFile,'a')
+            f.write('\n' + "Sleeping for 65min...")
+            f.close()
             sleep(3900) #Tweet every 65 minutes
         elif time1 == 3:
-            print("Sleeping for 46min...")
+            # file-append
+            f = open(self.logFile,'a')
+            f.write('\n' + "Sleeping for 46min...")
+            f.close()
             sleep(2760) #Tweet every 46 minutes
         else:
-            print("Sleeping for 23.min...")
+            # file-append
+            f = open(self.logFile,'a')
+            f.write('\n' + "Sleeping for 23.5min...")
+            f.close()
             sleep(1410) #Tweet every 23.5 minutes
-     
+
     @abstractmethod
     def getStatus(self):
         """"Return a string to update as the status"""
         pass
-    
+
     def postStatus(self, status):
         rtnBool = True
         if status and not status is None:
             try:
                 self.api.update_status(status)
-                print('Created a Status: ' + status[0:50] + "...")
+                # file-append
+                f = open(self.logFile,'a')
+                f.write('\n' + 'Created a Status: ' + status[0:50] + "...")
+                f.close()
             # Additions below
             except KeyboardInterrupt:
                 sys.exit("KeyboardInterrupt")
             except Exception as e:
                 print(e)
+                # file-append
+                f = open(self.logFile,'a')
+                f.write('\n' + e)
+                f.close()
         else:
-            print("Failed to create a status this time")
+            # file-append
+            f = open(self.logFile,'a')
+            f.write('\n' + "Failed to create a status this time")
+            f.close()
             rtnBool = False
         return rtnBool
 
     def doAction(self):
-        print("Trying to do an Action...")
+        # file-append
+        f = open(self.logFile,'a')
+        f.write('\n' + "Trying to do an Action...")
+        f.close()
+        #Update probabilities here
         potentialActions = ["retweet", "follow", "favorite", "favorite", "status", "status", "status", "nothing"]
         action = random.choice(potentialActions)
         statBool = True
@@ -274,50 +364,74 @@ class TwitterBot(object):
         timeNow = (datetime.datetime.now() - datetime.timedelta(hours=6)).time()
         if self.isNowInTimePeriod(self.timeStart, self.timeEnd, timeNow):
             if action == "retweet":
-                print("Chose Retweet")
+                # file-append
+                f = open(self.logFile,'a')
+                f.write('\n' + "Chose Retweet")
+                f.close()
                 statBool = self.postRetweet(random.choice(self.retweetTags))
             elif action == "status":
-                print("Chose Status")
+                # file-append
+                f = open(self.logFile,'a')
+                f.write('\n' + "Chose Status")
+                f.close()
                 statBool = self.postStatus(self.getStatus())
             elif action == "favorite":
-                print("Chose Favorite")
+                # file-append
+                f = open(self.logFile,'a')
+                f.write('\n' + "Chose Favorite")
+                f.close()
                 rInt = random.randint(1, 5)
                 for x in range(0, rInt):
                     statBool = self.addFavorite(random.choice(self.favoriteTags))
                     if (statBool == False) and (x > 0):
                         statBool = True
-                        break                        
+                        break
                     if statBool == False:
                         break
             elif action == "follow":
-                print("Chose Follow")
+                # file-append
+                f = open(self.logFile,'a')
+                f.write('\n' + "Chose Follow")
+                f.close()
                 rInt = random.randint(1, 3)
                 for x in range(0, rInt):
                     statBool = self.addFollower(random.choice(self.followTags))
                     if (statBool == False) and (x > 0):
                         statBool = True
-                        break 
+                        break
                     if statBool == False:
                         break
             else:
-                print("Chose to do Nothing this time... *shrug*")
+                # file-append
+                f = open(self.logFile,'a')
+                f.write('\n' + "Chose to do Nothing this time... *shrug*")
+                f.close()
                 statBool = True
                 pass
         else:
-            print("Outside time to do any actions... " + str(timeNow))
-        
+            # file-append
+            f = open(self.logFile,'a')
+            f.write('\n' + "Outside time to do any actions... " + str(timeNow))
+            f.close()
+
         #Check for manual retweets and favorites not logged in db
         #Also follow any new followers
         if self.isNowInTimePeriod(self.timeMOTS, self.timeMOTE, timeNow):
-            print("Middle of the night... " + str(timeNow))
-            print("Updating Databases")
-            self.updateRetweetDatabase()   
+            # file-append
+            f = open(self.logFile,'a')
+            f.write('\n' + "Middle of the night... " + str(timeNow))
+            f.write('\n' + "Updating Databases")
+            self.updateRetweetDatabase()
             self.updateFavoriteDatabase()
-            print("Following Followers")
+            f.write('\n' + "Following Followers")
+            f.close()
             self.followFollowers()
-        
+
         if statBool:
-            self.sleepyBaby()
+            self.sleepyBaby(self)
         else:
-            print("Failed to complete an action. Trying again in 2.5min")
+            # file-append
+            f = open(self.logFile,'a')
+            f.write('\n' + "Failed to complete an action. Trying again in 2.5min")
+            f.close()
             sleep(250)

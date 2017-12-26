@@ -84,7 +84,7 @@ class TwitterBot(object):
             if check == False:
                 # file-append
                 f = open(self.logFile,'a')
-                f.write('\n' + "Failed to Follow Anyone")
+                f.write('\n' + "Failed to Follow Anyone for Tag: " + tag)
                 f.close()
                 rtnBool = False
 
@@ -187,7 +187,7 @@ class TwitterBot(object):
             if check == False:
                 # file-append
                 f = open(self.logFile,'a')
-                f.write('\n' + "Failed to Favorite Anything")
+                f.write('\n' + "Failed to Favorite Anything for Tag: " + tag)
                 f.close()
                 rtnBool = False
 

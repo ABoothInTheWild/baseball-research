@@ -95,7 +95,7 @@ class TwitterBot(object):
             print(e)
             # file-append
             f = open(self.logFile,'a')
-            f.write('\n' + e)
+            f.write('\n' + str(e))
             f.close()
             rtnBool = False
         return rtnBool
@@ -141,7 +141,7 @@ class TwitterBot(object):
             print(e)
             # file-append
             f = open(self.logFile,'a')
-            f.write('\n' + e)
+            f.write('\n' + str(e))
             f.close()
             rtnBool = False
         return rtnBool
@@ -198,7 +198,7 @@ class TwitterBot(object):
             print(e)
             # file-append
             f = open(self.logFile,'a')
-            f.write('\n' + e)
+            f.write('\n' + str(e))
             f.close()
             rtnBool = False
         return rtnBool
@@ -219,7 +219,7 @@ class TwitterBot(object):
             print(e)
             # file-append
             f = open(self.logFile,'a')
-            f.write('\n' + e)
+            f.write('\n' + str(e))
             f.close()
             pass
 
@@ -239,7 +239,7 @@ class TwitterBot(object):
             print(e)
             # file-append
             f = open(self.logFile,'a')
-            f.write('\n' + e)
+            f.write('\n' + str(e))
             f.close()
             pass
 
@@ -258,7 +258,7 @@ class TwitterBot(object):
             print(e)
             # file-append
             f = open(self.logFile,'a')
-            f.write('\n' + e)
+            f.write('\n' + str(e))
             f.close()
             pass
 
@@ -278,7 +278,7 @@ class TwitterBot(object):
             print(e)
             # file-append
             f = open(self.logFile,'a')
-            f.write('\n' + e)
+            f.write('\n' + str(e))
             f.close()
             pass
         return rtnBool
@@ -341,7 +341,7 @@ class TwitterBot(object):
                 print(e)
                 # file-append
                 f = open(self.logFile,'a')
-                f.write('\n' + e)
+                f.write('\n' + str(e))
                 f.close()
         else:
             # file-append

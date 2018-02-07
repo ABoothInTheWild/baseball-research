@@ -3,8 +3,6 @@
 
 #Super Bowl Analysis and Prediction
 
-setwd("C:/Users/Alexander/Documents/baseball/NFL 2018")
-
 #Load libraries
 library(psych)
 library(dplyr)

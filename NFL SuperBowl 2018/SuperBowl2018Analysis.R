@@ -64,16 +64,24 @@ multiplot(pats_off_hist, pats_def_hist, eagles_off_hist, eagles_def_hist, cols =
 #Overlay with Neg. Bin approximation
 set.seed(123)
 fit <- MASS::fitdistr(pats_pf[pats_pf > 0], "negative binomial")
-pats_off_hist <- pats_off_hist + geom_line(aes(y=dnbinom(pats_pf, size=fit$estimate[1], mu=fit$estimate[2])), color = "red", lwd = 2)
+pats_off_hist <- pats_off_hist + geom_line(aes(y=dnbinom(pats_pf, size=fit$estimate[1], mu=fit$estimate[2]), 
+                                           colour = "Negative Binomial Approximation"), lwd = 2) +
+                                scale_colour_manual("", values = c("red")) + theme(legend.position="bottom")
 pats_off_hist
 fit <- MASS::fitdistr(pats_pa[pats_pa > 0], "negative binomial")
-pats_def_hist <- pats_def_hist + geom_line(aes(y=dnbinom(pats_pa, size=fit$estimate[1], mu=fit$estimate[2])), color = "red", lwd = 2)
+pats_def_hist <- pats_def_hist + geom_line(aes(y=dnbinom(pats_pa, size=fit$estimate[1], mu=fit$estimate[2]), 
+                                               colour = "Negative Binomial Approximation"), lwd = 2) +
+                                  scale_colour_manual("", values = c("red")) + theme(legend.position="bottom")
 pats_def_hist
 fit <- MASS::fitdistr(eagles_pf[eagles_pf > 0], "negative binomial")
-eagles_off_hist <- eagles_off_hist + geom_line(aes(y=dnbinom(eagles_pf, size=fit$estimate[1], mu=fit$estimate[2])), color = "red", lwd = 2)
+eagles_off_hist <- eagles_off_hist + geom_line(aes(y=dnbinom(eagles_pf, size=fit$estimate[1], mu=fit$estimate[2]), 
+                                                   colour = "Negative Binomial Approximation"), lwd = 2) +
+                                  scale_colour_manual("", values = c("red")) + theme(legend.position="bottom")
 eagles_off_hist
 fit <- MASS::fitdistr(eagles_pa[eagles_pa > 0], "negative binomial")
-eagles_def_hist <- eagles_def_hist + geom_line(aes(y=dnbinom(eagles_pa, size=fit$estimate[1], mu=fit$estimate[2])), color = "red", lwd = 2)
+eagles_def_hist <- eagles_def_hist + geom_line(aes(y=dnbinom(eagles_pa, size=fit$estimate[1], mu=fit$estimate[2]), 
+                                                   colour = "Negative Binomial Approximation"), lwd = 2) +
+                                    scale_colour_manual("", values = c("red")) + theme(legend.position="bottom")
 eagles_def_hist
 
 #Simulate
@@ -93,17 +101,54 @@ team2_win_pcnt <- team2_sum/niterations
 team1_win_pcnt #45.5
 team2_win_pcnt #54.5
 
+#Probability of hitting the Over
+over_prob <- nrow(final_scores[(final_scores$Team_1_Game_Score + final_scores$Team_2_Game_Score >= 48),]) / niterations
+over_prob
+
+#Probability of Game ending with at least 74 points
+over_prob2 <- nrow(final_scores[(final_scores$Team_1_Game_Score + final_scores$Team_2_Game_Score >= 74),]) / niterations
+over_prob2
+
+#Probability of Game ending within 1 score (8 points)
+over_prob3 <- nrow(final_scores[(abs(final_scores$Diff) <= 8),]) / niterations
+over_prob3
+
+#Probability of Game ending within 1 FG (3 points)
+over_prob4 <- nrow(final_scores[(abs(final_scores$Diff) <= 3),]) / niterations
+over_prob4
+
+#Probability of Eagles winning by 1 score (8 points or less), given they won
+over_prob5 <- nrow(final_scores[(0 <= final_scores$Diff & final_scores$Diff <= 8),]) / team2_sum
+over_prob5
+
 #Median score would be 24-22 to the Eagles
 
 #Plot
 gg<-ggplot(final_scores, aes(final_scores$Diff)) + ylab("Frequency") + xlab("Points") + 
              geom_histogram(aes(y = ..density..), binwidth = 5, boundary = 0, closed = "left")
 gg <- gg + vnl_theme()
-gg <- gg + ggtitle(paste("Histogram of Diff")) +
+gg <- gg + ggtitle(paste("Histogram of Difference in Scores")) +
   stat_function(fun = dnorm, 
                 args = list(mean = mean(final_scores$Diff), sd = sd(final_scores$Diff)), 
-                lwd = 1.5, col = 'red')
+                lwd = 1.5, aes(colour = "Normal Approximation")) +
+  scale_colour_manual("", values = c("red")) + theme(legend.position="bottom")
 gg
+
+#Double check with CLT normal curve
+1 - pnorm(0, mean = mean(final_scores$Diff), sd = sd(final_scores$Diff))
+
+#Plot 2
+gg2 <- ggplot(data = data.frame(x = c(0, 50)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = mean(final_scores$Team_1_Game_Score), 
+                                         sd = sd(final_scores$Team_1_Game_Score)), 
+                                         lwd = 1.5, aes(colour = "Patriots")) +
+  stat_function(fun = dnorm, args = list(mean = mean(final_scores$Team_2_Game_Score), 
+                                         sd = sd(final_scores$Team_2_Game_Score)), 
+                                         lwd = 1.5, aes(colour = "Eagles")) +
+  vnl_theme() + ggtitle(paste("Normal Approximations of Simulation Scores")) +
+  ylab("Density") + xlab("Simulated Points Scored") +
+  scale_colour_manual("Team", values = c("blue", "red")) + theme(legend.position="right")
+gg2
 
 ###########################################################################
 #Part 2: Use Pythagorean Expectation and Bayesian analysis to determine the
@@ -152,9 +197,15 @@ prior.alpha <- m$estimate[1]
 prior.beta <- m$estimate[2]
 
 #Plot to see how good they look on every team
-hist(df_pointsFandA$Expected_WinPerc, freq = F, xlab = "Expected Win Percentage",
-     main="Histogram for Expected Win Percentage", ylim = c(0,3))
-curve(dbeta(x, prior.alpha, prior.beta), add = TRUE, col = "red", lwd=2.5)
+gg<-ggplot(df_pointsFandA, aes(df_pointsFandA$Expected_WinPerc)) + ylab("Density") + xlab("xWP") + 
+  geom_histogram(aes(y = ..density..), binwidth = 0.1, boundary = 0, closed = "left")
+gg <- gg + vnl_theme()
+gg <- gg + ggtitle(paste("Histogram for Expected Win Percentage")) +
+  stat_function(fun = dbeta, 
+                args = list(prior.alpha, prior.beta), 
+                lwd = 1.5, aes(colour = "Beta Approximation")) +
+  scale_colour_manual("", values = c("red")) + theme(legend.position="bottom")
+gg
 
 #Get Bayes results. Successes and Failures are determined by xWP * 18 (games pre-Super Bowl)
 bayesResults <- bayesAnalysis(df_pointsFandA[df_pointsFandA$Team == "New England Patriots", "Expected_WinPerc"] * 18, 
@@ -174,9 +225,14 @@ b.group.success = bayesResults[, "Group 2 Successes"]
 b.group.failure = bayesResults[, "Group 2 Failures"]
 
 #Plot
-curve(dbeta(x, a.group.success+1, a.group.failure+1), col = "red", lwd=2.5, 
-      main = "Bayesian Estimates of True xWP", xlab = "Expected Win Percentage (xWP)", ylab = "Density")
-curve(dbeta(x, b.group.success+1, b.group.failure+1), add = TRUE, col = "Blue", lwd=2.5)
-legend(0, 2.5, c("Patriots","Eagles"), lty=c(1,1), lwd=c(2.5,2.5), col=c("red","blue"))      
+gg2 <- ggplot(data = data.frame(x = c(0, 1)), aes(x)) +
+  stat_function(fun = dbeta, args = list(a.group.success+1, a.group.failure+1), 
+                lwd = 1.5, aes(colour = "Patriots")) +
+  stat_function(fun = dbeta, args = list(b.group.success+1, b.group.failure+1), 
+                lwd = 1.5, aes(colour = "Eagles")) +
+  vnl_theme() + ggtitle(paste("Bayesian Estimates of True xWP")) +
+  ylab("Density") + xlab("Expected Win Percentage (xWP)") +
+  scale_colour_manual("Team", values = c("blue", "red")) + theme(legend.position="right")
+gg2
 
 #Fin

@@ -1,4 +1,7 @@
 #Alexander Booth
+#February 24, 2018
+
+#Andrew Cashner Analysis using historical FIP and ERA
 
 #Libraries
 library(readr)
@@ -6,11 +9,11 @@ library(ggplot2)
 
 #Load data
 Teams <- read_csv("https://raw.githubusercontent.com/ABoothInTheWild/baseball-research/master/Teams.csv")
-pitchers_full <- read.csv("G:/Other Docs/blurp/Pitching.csv", stringsAsFactors=FALSE)
-fangraphs_constants <- read_csv("G:/Other Docs/blurp/FanGraphs_FIP_Constants.csv")
+pitchers_full <- read_csv("https://raw.githubusercontent.com/ABoothInTheWild/baseball-research/master/Cashner/Pitching.csv")
+fangraphs_constants <- read_csv("https://raw.githubusercontent.com/ABoothInTheWild/baseball-research/master/Cashner/FanGraphs_FIP_Constants.csv")
 
 #Load Prewritten functions
-source("G:/Other Docs/blurp/vnl_theme.R")
+source("https://raw.githubusercontent.com/ABoothInTheWild/baseball-research/master/Cashner/vnl_theme.R")
 
 #subset by year and variable
 teamSub <- subset(Teams, (yearID > 1996 & yearID <= 2016))

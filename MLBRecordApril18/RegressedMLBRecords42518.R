@@ -8,7 +8,7 @@
 #https://fivethirtyeight.com/features/how-to-predict-mlb-records-from-early-results/
 #https://www.oddsshark.com/mlb/mlb-season-win-totals
 
-setwd("C:/Users/Alexander/Documents/baseball/MLBRecordApril18")
+setwd("~/MLBRecordApril18")
 
 #Load Libraries
 library(ggplot2)

@@ -10,8 +10,6 @@ import pandas as pd
 import os
 import numpy as np
 
-os.chdir('C:/Users/Alexander/Documents/baseball/Past Perf Playoffs')
-
 #Load Data
 mlb16 = pd.read_csv('Mlb_2016_SeasonStandings.csv')
 mlb17Pre = pd.read_csv('Mlb_2017_PreseasonWins.csv')

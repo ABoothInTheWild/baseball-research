@@ -21,7 +21,7 @@ from scipy.stats import beta
 import os
 
 #read data
-os.chdir('C:/Users/abooth/Documents/Python Scripts/PastPreds/playoffOdds/2018')
+os.chdir('C:/Users/abooth/Documents/Python Scripts/PastPreds/mlbPlayoffOdds2018')
 beta18Pre = pd.read_csv("mlb2018PreSeasonBetaEstimates.csv")
 
 #Name Divisions
@@ -113,7 +113,7 @@ def daterange(start_date, end_date):
 
 dates = []
 start_date = date(2018, 3, 29)
-end_date = date(2018, 8, 6)
+end_date = date(2018, 8, 7)
 for single_date in daterange(start_date, end_date):
     dates.append(single_date.strftime("%Y%m%d"))
     
@@ -183,6 +183,7 @@ for i in range(len(dates)):
 resultsDF.to_csv("mlb2018PlayoffPreds.csv", index=False)
 
 #######################################################################
+
 #Playoff Odds
 
 resultsDF = pd.read_csv("mlb2018PlayoffPreds.csv")
@@ -194,7 +195,7 @@ import datetime
 
 dates = []
 start_date = date(2018, 3, 28)
-end_date = date(2018, 8, 6)
+end_date = date(2018, 8, 7)
 for single_date in daterange(start_date, end_date):
     dates.append(single_date)
     
@@ -230,17 +231,22 @@ for league in DivisionsLeague:
             
             divisionName = divNames[i]
             
+            if 'AL' in divisionName:
+                fileNamePrefix = '/HTML/Division/AL/'
+            else:
+                fileNamePrefix = '/HTML/Division/NL/'
+            
             if dataType != 'ExpectedWins':
                 plotTitle = divisionName + ' 2018 Bayesian ' + dataType + ' Probabilities'
                 yLabel = dataType + ' Probability'
-                fileName = divisionName + '_2018_' + dataType + '_Probs'
+                fileName = os.getcwd() + fileNamePrefix + divisionName + '_2018_' + dataType + '_Probs'
                 yStart = 0
                 yEnd = 1.05
                 hoverFormat = '.2f'
             else:
                 plotTitle = divisionName + ' 2018 Bayesian Expected Wins'
                 yLabel = "Expected Wins"
-                fileName = divisionName + '_2018_' + dataType
+                fileName = os.getcwd() + fileNamePrefix + divisionName + '_2018_' + dataType
                 yStart = 50
                 yEnd = 120
                 hoverFormat = '.0f'
@@ -266,7 +272,7 @@ for league in DivisionsLeague:
                                  hoverformat = hoverFormat),
                     xaxis = dict(title = '',
                                range = [to_unix_time(datetime.datetime(2018, 3, 28)),
-                                        to_unix_time(datetime.datetime(2018, 8, 6))]))
+                                        to_unix_time(datetime.datetime(2018, 8, 7))]))
             
             fig = go.Figure(data = data, layout = layout)
             offline.plot(fig, filename = fileName + '.html')
@@ -285,18 +291,23 @@ for league in LeagueTeams:
         dataToPlot.columns = teamHeaders
         
         leagueName = leagueNames[i]
+        
+        if 'American' in leagueName:
+            fileNamePrefix = '/HTML/League/AL/'
+        else:
+            fileNamePrefix = '/HTML/League/NL/'
             
         if dataType != 'ExpectedWins':
             plotTitle = leagueName + ' 2018 Bayesian ' + dataType + ' Probabilities'
             yLabel = dataType + ' Probability'
-            fileName = leagueName + '_2018_' + dataType + '_Probs'
+            fileName = os.getcwd() + fileNamePrefix + leagueName + '_2018_' + dataType + '_Probs'
             yStart = 0
             yEnd = 1.05
             hoverFormat = '.2f'
         else:
             plotTitle = leagueName + ' 2018 Bayesian Expected Wins'
             yLabel = "Expected Wins"
-            fileName = leagueName + '_2018_' + dataType
+            fileName = os.getcwd() + fileNamePrefix + leagueName + '_2018_' + dataType
             yStart = 50
             yEnd = 120
             hoverFormat = '.0f'
@@ -322,7 +333,7 @@ for league in LeagueTeams:
                              hoverformat = hoverFormat),
                 xaxis = dict(title = '',
                            range = [to_unix_time(datetime.datetime(2018, 3, 28)),
-                                    to_unix_time(datetime.datetime(2018, 8, 6))]))
+                                    to_unix_time(datetime.datetime(2018, 8, 7))]))
         
         fig = go.Figure(data = data, layout = layout)
         offline.plot(fig, filename = fileName + '.html')
@@ -340,18 +351,19 @@ for dataType in dataTypes:
     dataToPlot.columns = teamHeaders
     
     levName = levNames[i]
+    fileNamePrefix = '/HTML/Level/'
         
     if dataType != 'ExpectedWins':
         plotTitle = levName + ' 2018 Bayesian ' + dataType + ' Probabilities'
         yLabel = dataType + ' Probability'
-        fileName = levName + '_2018_' + dataType + '_Probs'
+        fileName = os.getcwd() + fileNamePrefix + levName + '_2018_' + dataType + '_Probs'
         yStart = 0
         yEnd = 1.05
         hoverFormat = '.2f'
     else:
         plotTitle = levName + ' 2018 Bayesian Expected Wins'
         yLabel = "Expected Wins"
-        fileName = levName + '_2018_' + dataType
+        fileName = os.getcwd() + fileNamePrefix + levName + '_2018_' + dataType
         yStart = 50
         yEnd = 120
         hoverFormat = '.0f'
@@ -377,7 +389,7 @@ for dataType in dataTypes:
                          hoverformat = hoverFormat),
             xaxis = dict(title = '',
                        range = [to_unix_time(datetime.datetime(2018, 3, 28)),
-                                to_unix_time(datetime.datetime(2018, 8, 6))]))
+                                to_unix_time(datetime.datetime(2018, 8, 7))]))
     
     fig = go.Figure(data = data, layout = layout)
     offline.plot(fig, filename = fileName + '.html')

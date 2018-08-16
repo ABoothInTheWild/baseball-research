@@ -113,7 +113,7 @@ def daterange(start_date, end_date):
 
 dates = []
 start_date = date(2018, 3, 29)
-end_date = date(2018, 8, 14)
+end_date = date(2018, 8, 16)
 for single_date in daterange(start_date, end_date):
     dates.append(single_date.strftime("%Y%m%d"))
     
@@ -195,7 +195,7 @@ import datetime
 
 dates = []
 start_date = date(2018, 3, 28)
-end_date = date(2018, 8, 14)
+end_date = date(2018, 8, 16)
 for single_date in daterange(start_date, end_date):
     dates.append(single_date)
     
@@ -272,7 +272,7 @@ for league in DivisionsLeague:
                                  hoverformat = hoverFormat),
                     xaxis = dict(title = '',
                                range = [to_unix_time(datetime.datetime(2018, 3, 28)),
-                                        to_unix_time(datetime.datetime(2018, 8, 14))]))
+                                        to_unix_time(datetime.datetime(2018, 8, 16))]))
             
             fig = go.Figure(data = data, layout = layout)
             offline.plot(fig, filename = fileName + '.html')
@@ -333,7 +333,7 @@ for league in LeagueTeams:
                              hoverformat = hoverFormat),
                 xaxis = dict(title = '',
                            range = [to_unix_time(datetime.datetime(2018, 3, 28)),
-                                    to_unix_time(datetime.datetime(2018, 8, 14))]))
+                                    to_unix_time(datetime.datetime(2018, 8, 16))]))
         
         fig = go.Figure(data = data, layout = layout)
         offline.plot(fig, filename = fileName + '.html')
@@ -389,7 +389,65 @@ for dataType in dataTypes:
                          hoverformat = hoverFormat),
             xaxis = dict(title = '',
                        range = [to_unix_time(datetime.datetime(2018, 3, 28)),
-                                to_unix_time(datetime.datetime(2018, 8, 14))]))
+                                to_unix_time(datetime.datetime(2018, 8, 16))]))
     
     fig = go.Figure(data = data, layout = layout)
     offline.plot(fig, filename = fileName + '.html')
+
+
+
+########################################################
+
+dates = []
+start_date = date(2018, 3, 29)
+end_date = date(2018, 8, 16)
+for single_date in daterange(start_date, end_date):
+    dates.append(single_date.strftime("%Y%m%d"))
+    
+dateLen = len(dates)
+
+team = "BOS"
+ntrials=100000
+np.random.seed(seed=54321)
+
+i = dateLen - 1
+
+priorA = beta18Pre[beta18Pre.Team_Abbr == team]["PriorAlpha"].values[0]
+priorB = beta18Pre[beta18Pre.Team_Abbr == team]["PriorBeta"].values[0]
+#get posteriors
+team18Res = mlb18Results[mlb18Results.Team_Abbr==team].iloc[:,2:((2*dateLen)+2)]
+teamWins = team18Res.iloc[:,range(0,(2*dateLen),2)].values[0]
+teamLosses = team18Res.iloc[:,range(1,(2*dateLen)+1,2)].values[0]
+posteriorAlpha = priorA + teamWins[i]
+posteriorBeta = priorB + teamLosses[i]    
+
+#where the magic happens
+sample = beta.rvs(posteriorAlpha, posteriorBeta, size=ntrials)
+gamesLeft = 162 - teamWins[i] - teamLosses[i]
+winEstimate = np.round(teamWins[i] + sample*gamesLeft,0)
+print(np.mean(winEstimate))
+print(np.percentile(winEstimate, 2.5))
+print(np.percentile(winEstimate, 97.5))
+
+
+######################################################################
+
+#init contstants
+team = "BOS"
+ntrials=100000
+np.random.seed(seed=54321)
+
+priorA = beta18Pre[beta18Pre.Team_Abbr == team]["PriorAlpha"].values[0]
+priorB = beta18Pre[beta18Pre.Team_Abbr == team]["PriorBeta"].values[0]
+#get posteriors
+team18Res = mlb18Results[mlb18Results.Team_Abbr==team].iloc[:,2:((2*dateLen)+2)]
+teamWins = team18Res.iloc[:,range(0,(2*dateLen),2)].values[0]
+teamLosses = team18Res.iloc[:,range(1,(2*dateLen)+1,2)].values[0]
+posteriorAlpha = priorA + teamWins[i]
+posteriorBeta = priorB + teamLosses[i]
+#where the magic happens
+sample = beta.rvs(posteriorAlpha, posteriorBeta, size=ntrials)
+gamesLeft = 162 - teamWins[i] - teamLosses[i]
+sampleWins = np.round(teamWins[i] + sample*gamesLeft,0)
+prob = len(sampleWins[sampleWins >= 116])/float(ntrials)
+print(prob)

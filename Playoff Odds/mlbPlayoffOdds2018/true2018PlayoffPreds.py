@@ -106,7 +106,7 @@ def daterange(start_date, end_date):
 
 dates = []
 start_date = date(2018, 3, 29)
-end_date = date(2018, 8, 20)
+end_date = date(2018, 8, 21)
 for single_date in daterange(start_date, end_date):
     dates.append(single_date.strftime("%Y%m%d"))
     
@@ -188,7 +188,7 @@ import datetime
 
 dates = []
 start_date = date(2018, 3, 28)
-end_date = date(2018, 8, 20)
+end_date = date(2018, 8, 21)
 for single_date in daterange(start_date, end_date):
     dates.append(single_date)
     
@@ -265,7 +265,7 @@ for league in DivisionsLeague:
                                  hoverformat = hoverFormat),
                     xaxis = dict(title = '',
                                range = [to_unix_time(datetime.datetime(2018, 3, 28)),
-                                        to_unix_time(datetime.datetime(2018, 8, 20))]))
+                                        to_unix_time(datetime.datetime(2018, 8, 21))]))
             
             fig = go.Figure(data = data, layout = layout)
             offline.plot(fig, filename = fileName + '.html')
@@ -326,7 +326,7 @@ for league in LeagueTeams:
                              hoverformat = hoverFormat),
                 xaxis = dict(title = '',
                            range = [to_unix_time(datetime.datetime(2018, 3, 28)),
-                                    to_unix_time(datetime.datetime(2018, 8, 20))]))
+                                    to_unix_time(datetime.datetime(2018, 8, 21))]))
         
         fig = go.Figure(data = data, layout = layout)
         offline.plot(fig, filename = fileName + '.html')
@@ -382,7 +382,7 @@ for dataType in dataTypes:
                          hoverformat = hoverFormat),
             xaxis = dict(title = '',
                        range = [to_unix_time(datetime.datetime(2018, 3, 28)),
-                                to_unix_time(datetime.datetime(2018, 8, 20))]))
+                                to_unix_time(datetime.datetime(2018, 8, 21))]))
     
     fig = go.Figure(data = data, layout = layout)
     offline.plot(fig, filename = fileName + '.html')
@@ -393,7 +393,7 @@ for dataType in dataTypes:
 
 dates = []
 start_date = date(2018, 3, 29)
-end_date = date(2018, 8, 19)
+end_date = date(2018, 8, 21)
 for single_date in daterange(start_date, end_date):
     dates.append(single_date.strftime("%Y%m%d"))
     

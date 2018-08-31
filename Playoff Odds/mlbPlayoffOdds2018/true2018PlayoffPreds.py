@@ -106,7 +106,7 @@ def daterange(start_date, end_date):
 
 dates = []
 start_date = date(2018, 3, 29)
-end_date = date(2018, 8, 30)
+end_date = date(2018, 8, 31)
 for single_date in daterange(start_date, end_date):
     dates.append(single_date.strftime("%Y%m%d"))
     
@@ -188,7 +188,7 @@ import datetime
 
 dates = []
 start_date = date(2018, 3, 28)
-end_date = date(2018, 8, 30)
+end_date = date(2018, 8, 31)
 for single_date in daterange(start_date, end_date):
     dates.append(single_date)
     
@@ -265,7 +265,7 @@ for league in DivisionsLeague:
                                  hoverformat = hoverFormat),
                     xaxis = dict(title = '',
                                range = [to_unix_time(datetime.datetime(2018, 3, 28)),
-                                        to_unix_time(datetime.datetime(2018, 8, 30))]))
+                                        to_unix_time(datetime.datetime(2018, 8, 31))]))
             
             fig = go.Figure(data = data, layout = layout)
             offline.plot(fig, filename = fileName + '.html')
@@ -326,7 +326,7 @@ for league in LeagueTeams:
                              hoverformat = hoverFormat),
                 xaxis = dict(title = '',
                            range = [to_unix_time(datetime.datetime(2018, 3, 28)),
-                                    to_unix_time(datetime.datetime(2018, 8, 30))]))
+                                    to_unix_time(datetime.datetime(2018, 8, 31))]))
         
         fig = go.Figure(data = data, layout = layout)
         offline.plot(fig, filename = fileName + '.html')
@@ -354,9 +354,9 @@ for dataType in dataTypes:
         yEnd = 1.05
         hoverFormat = '.2f'
     else:
-        plotTitle = levName + ' 2018 Bayesian Expected Wins'
+        plotTitle = levName + ' 2018 Bayesian Expected Wins through 8/26'
         yLabel = "Expected Wins"
-        fileName = os.getcwd() + fileNamePrefix + levName + '_2018_' + dataType
+        fileName = os.getcwd() + fileNamePrefix + levName + '_2018_826_' + dataType
         yStart = 45
         yEnd = 120
         hoverFormat = '.0f'
@@ -382,7 +382,7 @@ for dataType in dataTypes:
                          hoverformat = hoverFormat),
             xaxis = dict(title = '',
                        range = [to_unix_time(datetime.datetime(2018, 3, 28)),
-                                to_unix_time(datetime.datetime(2018, 8, 30))]))
+                                to_unix_time(datetime.datetime(2018, 8, 31))]))
     
     fig = go.Figure(data = data, layout = layout)
     offline.plot(fig, filename = fileName + '.html')

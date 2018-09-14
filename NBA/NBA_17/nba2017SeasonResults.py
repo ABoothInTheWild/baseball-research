@@ -16,9 +16,8 @@ from xmlstats import xmlstats
 import numpy as np
 import pandas as pd
 
-access_token = '27ab1460-5a3b-47a5-bab8-7c0192f848d9'
-user_agent = 'adbooth01@gmail.com'
-
+access_token = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+user_agent = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 
 stats = xmlstats.Xmlstats(access_token, user_agent)
 

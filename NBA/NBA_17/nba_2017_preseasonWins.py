@@ -10,8 +10,6 @@ import pandas as pd
 import os
 import numpy as np
 
-os.chdir('C:/Users/abooth/Documents/Python Scripts/NBA/NBA_17/')
-
 #Load Data
 nba17Pre = pd.read_csv('nba_2017_preseasonWins.csv')
 
@@ -224,7 +222,7 @@ teams = nba17Pre.Abbr.values
 #Get Gifs    
 for team_Abbr in teams:
     #Personalized Prior
-    filename = "C:/Users/abooth/Documents/Python Scripts/NBA/NBA_17/Teams/" + team_Abbr + "/personalizedPrior/"
+    filename = "Teams/" + team_Abbr + "/personalizedPrior/"
     if not os.path.exists(os.path.dirname(filename)):
         try:
             os.makedirs(os.path.dirname(filename))

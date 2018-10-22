@@ -6,7 +6,6 @@ Created on Tue Sep 25 11:45:10 2018
 """
 
 import os
-os.chdir("C:/Users/abooth/Documents/Python Scripts/PastPreds/mlbPlayoffOdds2018")
 
 from MLBWinProbability import *
 from MLB538WinProbability import *
@@ -24,8 +23,8 @@ def daterange(start_date, end_date):
 #for dates in daterange(datetime(2018,3,29), datetime.today()):
     #print(dates)
     
-access_token = 'a02014c0-9f69-4bf7-b9ac-4d804dfe58a3'
-user_agent = 'adbooth01@gmail.com'
+access_token = 'XXXXXXXXXXXXXXXXXXXXXXXXX'
+user_agent = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     
 df = pd.read_csv("https://projects.fivethirtyeight.com/mlb-api/mlb_elo.csv")
 df = df[df.season == 2018]

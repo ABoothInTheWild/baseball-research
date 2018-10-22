@@ -19,8 +19,8 @@ from datetime import datetime
 import numpy as np
 from xmlstats import xmlstats
 
-access_token = 'a02014c0-9f69-4bf7-b9ac-4d804dfe58a3'
-user_agent = 'adbooth01@gmail.com'
+access_token = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+user_agent = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 
 #read data
 beta18Pre = pd.read_csv("https://raw.githubusercontent.com/ABoothInTheWild/baseball-research/master/Playoff%20Odds/mlbPlayoffOdds2018/mlb2018PreSeasonBetaEstimates.csv")

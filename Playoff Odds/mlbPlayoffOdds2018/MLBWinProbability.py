@@ -11,8 +11,8 @@ from scipy.stats import beta
 import numpy as np
 from xmlstats import xmlstats
 
-access_token = 'a02014c0-9f69-4bf7-b9ac-4d804dfe58a3'
-user_agent = 'adbooth01@gmail.com'
+access_token = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+user_agent = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     
 def MLBWinProbability(homeTeamAbbr, awayTeamAbbr, standingsOnDate, lastYearStandingsOnDate, override=False, inpDate = datetime(2018, 3, 29), homeAdditionalHomeWins=0, homeAdditionalHomeLosses=0, homeAdditionalTotalWins=0, homeAdditionalTotalLosses=0, awayAdditionalAwayWins=0, awayAdditionalAwayLosses=0, awayAdditionalTotalWins=0, awayAdditionalTotalLosses=0):
     #MLB Home Field Single Game Neutral Site

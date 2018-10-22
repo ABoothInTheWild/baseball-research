@@ -6,7 +6,6 @@ Created on Sat Oct 13 16:50:53 2018
 """
 
 import os
-os.chdir("C:/Users/abooth/Documents/Python Scripts/PastPreds/mlbPlayoffOdds2018")
 
 from MLBWinProbability import *
 from MLB538WinProbability import *
@@ -14,8 +13,8 @@ from RunsScoredAllowedSimulator import *
 import pandas as pd
 import numpy as np
 
-access_token = 'a02014c0-9f69-4bf7-b9ac-4d804dfe58a3'
-user_agent = 'adbooth01@gmail.com'
+access_token = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+user_agent = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 
 stats = xmlstats.Xmlstats(access_token, user_agent)
 date_format = datetime.today().strftime("%Y%m%d")    

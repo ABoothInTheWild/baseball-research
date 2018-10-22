@@ -22,14 +22,11 @@ import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
 import os
 
-#World Series 2017 Simulator
+#Wild Card 2018 Simulator
 #Using Negative Binomial Disribution
 
-#Alexander Booth
-#October 24, 2017
 
 #Set Directory
-os.chdir(r"C:\Users\abooth\Documents\Python Scripts\PastPreds\mlbPlayoffOdds2018")
 
 from RunsScoredAllowedSimulator import *
 
